@@ -1,1 +1,17 @@
-<p>invoice works!</p>
+<div class="container">
+  <div class="first">
+    <span class="id"><span>#</span>{{invoice.id}}</span>
+    <span class="date">{{invoice.createdAt}}</span>
+    <span class="name">{{invoice.clientName}}</span>
+  </div>
+  <div class="second">
+    <span class="total">{{ invoice.total|currency : "EUR" }}</span>
+    <span class="status">
+      <span class="status-bullet"></span>
+      <p>{{invoice.status}}</p>
+    </span>
+    <span class="icon">
+      <img src="../../assets/icons/right.png" alt="arrow icon">
+    </span>
+  </div>
+</div>

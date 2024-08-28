@@ -16,7 +16,6 @@ export class InvoiceEffects {
     mergeMap(() => this.invoiceService.getInvoices()
       .pipe(
         map((invoices: Invoice[]) => {
-            console.log(invoices);
            return  InvoiceActions.loadInvoicesSuccess({ invoices })}),
         catchError(error => of(InvoiceActions.loadInvoicesFailure({ error })))
       )

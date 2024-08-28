@@ -39,7 +39,7 @@
           <div class="filterwrap">
             <p>Filter by status</p>
             <img src="../assets/icons/filter.png" alt="filter icon" />
-            
+
             <div class="filtermenu">
               <span class="option">
                 <input class="filteroptions" type="checkbox" id="draft" />
@@ -56,14 +56,23 @@
             </div>
           </div>
           <div class="newinvoice">
-              <span class="addinvoiceIcon">
-                <img src="../assets/icons/addinvoice.png" alt="add invoice">
-              </span>
-              <p class="newinvoiceText">New Invoice</p>
+            <span class="addinvoiceIcon">
+              <img src="../assets/icons/addinvoice.png" alt="add invoice" />
+            </span>
+            <p class="newinvoiceText">New Invoice</p>
           </div>
         </div>
       </div>
-      <div class="routeroutlet"></div>
+      <div class="routeroutlet">
+        <ng-container *ngIf="invoices$ | async as invoices">
+          <app-invoice *ngFor="let invoice of invoices" [invoice]="invoice"></app-invoice>
+        </ng-container>
+      </div>
+    </div>
+    <!-- Add or Edit Invoice Side Modal -->
+    <div class="add-edit-invoice">
+      <!-- form to edit or add invoice -->
+      <div class="form"></div>
     </div>
   </div>
 </div>
