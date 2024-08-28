@@ -1,7 +1,7 @@
 .container {
   /* border: 2px solid red; */
   background-color: white;
-  box-shadow: 0 5px 5px 5px #e2e3f08b;
+  box-shadow: 0 5px 5px 5px #e2e3f053;
   min-height: 6rem;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -56,7 +56,6 @@
 }
 
 .status {
-  border: 1px solid red;
   font-weight: bold;
   padding: 1rem;
   height: 40%;
@@ -69,7 +68,6 @@
 }
 .status-bullet{
   display: block;
-  border: 1px solid red;
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 100vw;
@@ -78,8 +76,25 @@ img{
   width: 0.7rem;
 }
 .icon{
-  /* border: 1px solid red; */
   width: 2rem;
 }
 
 /* details styling endss here */
+
+/* darkmode */
+.darkmode > span{
+  color: white;
+}
+
+.darkmode{
+  color: white;
+}
+
+.darkmodeBackground{
+  background-color: #1E2139;
+  box-shadow: none;
+}
+
+.darkmode > .idHarsh{
+ color: #7E88C3;
+}

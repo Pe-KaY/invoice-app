@@ -1,0 +1,18 @@
+<div class="titles">
+  <span class="itemname normaltext" [class.darkmodeTextBold]="service.isDarkMode">{{ items.name }}</span>
+  <span class="itemquantity">
+    <p class="normaltext" [class.darkmodeTextBold]="service.isDarkMode">
+      {{ items.quantity }}
+    </p>
+  </span>
+  <span class="itemprice">
+    <p class="normaltext" [class.darkmodeTextBold]="service.isDarkMode">
+      {{ items.price | currency : "EUR" }}
+    </p>
+  </span>
+  <span class="itemtotal">
+    <p class="normaltext" [class.darkmodeTextBold]="service.isDarkMode">
+      {{ items.total | currency : "EUR" }}
+    </p>
+  </span>
+</div>

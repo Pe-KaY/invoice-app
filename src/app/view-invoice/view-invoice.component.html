@@ -1,1 +1,207 @@
-<p>view-invoice works!</p>
+<ng-container *ngIf="invoice$ | async as invoice">
+  <div class="container">
+    <div (click)="service.closeViewInvoice()" class="backwrapper">
+      <!-- back icon svg -->
+      <svg
+        width="10"
+        height="12"
+        viewBox="0 0 10 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g filter="url(#filter0_d_0_8737)">
+          <path
+            d="M4.3418 0.886047L0.113895 5.11395L4.3418 9.34185"
+            stroke="#7C5DFA"
+            stroke-width="2"
+            shape-rendering="crispEdges"
+          />
+        </g>
+        <defs>
+          <filter
+            id="filter0_d_0_8737"
+            x="-5.30029"
+            y="0.178955"
+            width="14.3492"
+            height="17.87"
+            filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB"
+          >
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
+            <feOffset dy="4" />
+            <feGaussianBlur stdDeviation="2" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow_0_8737"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow_0_8737"
+              result="shape"
+            />
+          </filter>
+        </defs>
+      </svg>
+      <!-- back icon svg -->
+      <p [class.darkmodeText]="service.isDarkMode">Go Back</p>
+    </div>
+
+    <!--info and control menu  -->
+    <div class="controlmenu" [class.darkmodeBackground]="service.isDarkMode">
+      <div class="statuswrapper">
+        <p [class.darkmodeText]="service.isDarkMode">Status</p>
+        <span
+          class="status"
+          [ngStyle]="service.getStatusBackground(invoice.status)"
+        >
+          <span
+            class="status-bullet"
+            [ngStyle]="service.getStatusBullet(invoice.status)"
+          ></span>
+          <p [ngStyle]="service.getStatusText(invoice.status)">
+            {{ invoice.status | titlecase }}
+          </p>
+        </span>
+      </div>
+      <div class="controls">
+        <span class="edit">Edit</span>
+        <span class="delete">Delete</span>
+        <span class="mark">Mark as Pending</span>
+      </div>
+    </div>
+
+    <!-- content details -->
+    <div class="details" [class.darkmodeBackground]="service.isDarkMode">
+      <div class="top-details">
+        <span class="iteminfowrapper">
+          <span [class.darkmodeTextBold]="service.isDarkMode" class="id"
+            ><span [class.idHarsh]="service.isDarkMode">#</span
+            >{{ invoice.id }}</span
+          >
+          <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+            {{ invoice.description }}
+          </p>
+        </span>
+        <span class="addresswrapper">
+          <p [class.darkmodeText]="service.isDarkMode">
+            {{ invoice.clientAddress.city }}
+          </p>
+          <p [class.darkmodeText]="service.isDarkMode">
+            {{ invoice.clientAddress.street }}
+          </p>
+          <p [class.darkmodeText]="service.isDarkMode">
+            {{ invoice.clientAddress.postCode }}
+          </p>
+          <p [class.darkmodeText]="service.isDarkMode">
+            {{ invoice.clientAddress.country }}
+          </p>
+        </span>
+      </div>
+      <div class="bottom-details">
+        <div class="dates">
+          <span>
+            <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+              Invoice Date
+            </p>
+            <p class="bold" [class.darkmodeTextBold]="service.isDarkMode">
+              {{ invoice.createdAt | date }}
+            </p>
+          </span>
+          <span>
+            <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+              Payment Due
+            </p>
+            <p class="bold" [class.darkmodeTextBold]="service.isDarkMode">
+              {{ invoice.paymentDue | date }}
+            </p>
+          </span>
+        </div>
+        <div class="addresses">
+          <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+            Bill To
+          </p>
+          <p class="bold" [class.darkmodeTextBold]="service.isDarkMode">
+            {{ invoice.clientName }}
+          </p>
+          <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+            {{ invoice.clientAddress.country }}
+          </p>
+          <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+            {{ invoice.clientAddress.city }}
+          </p>
+          <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+            {{ invoice.clientAddress.street }}
+          </p>
+          <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+            {{ invoice.clientAddress.postCode }}
+          </p>
+        </div>
+        <div class="email">
+          <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+            Sent To
+          </p>
+          <p class="bold" [class.darkmodeTextBold]="service.isDarkMode">
+            {{ invoice.clientEmail }}
+          </p>
+        </div>
+      </div>
+      <!-- footer item summary and total -->
+      <div class="footer">
+        <div class="iteminfo" [class.iteminfoDark]="service.isDarkMode">
+          <div class="titles">
+            <span
+              class="itemname normaltext"
+              [class.darkmodeText]="service.isDarkMode"
+              >Item Name</span
+            >
+            <span class="itemquantity">
+              <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+                QTY.
+              </p>
+            </span>
+            <span class="itemprice">
+              <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+                Price
+              </p>
+            </span>
+            <span class="itemtotal">
+              <p class="normaltext" [class.darkmodeText]="service.isDarkMode">
+                Total
+              </p>
+            </span>
+          </div>
+          <!-- invoice items component here -->
+
+          <app-invoice-items
+            *ngFor="let item of invoice.items"
+            [items]="item"
+          ></app-invoice-items>
+        </div>
+        <div class="amountdue" [class.amountdueDark]="service.isDarkMode">
+          <p class="amountduetext" [class.darkmodeText]="service.isDarkMode">
+            Amount Due
+          </p>
+          <p
+            class="bold totaltext"
+            [class.darkmodeTextBold]="service.isDarkMode"
+          >
+            {{ invoice.total | currency : "EUR" }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
