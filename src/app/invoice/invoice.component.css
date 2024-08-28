@@ -1,0 +1,85 @@
+.container {
+  /* border: 2px solid red; */
+  background-color: white;
+  box-shadow: 0 5px 5px 5px #e2e3f08b;
+  min-height: 6rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 2rem 1rem;
+}
+
+.container:hover {
+  outline: 1px solid #7c5dfa;
+}
+/* first contains id name and due date and second total staus and icon */
+.first,
+.second {
+  display: flex;
+  align-items: center;
+}
+.first{
+  width: 60%;
+  justify-content: start;
+  gap: 1rem;
+}
+.second{
+  /* border: 1px solid red; */
+  width: 40%;
+  gap: 1.2rem;
+  justify-content: end;
+}
+
+/* details styling starts here */
+
+.id{
+  font-weight: bold;
+  font-size: 1rem;
+}
+.id > span{
+  color: #7E88C3;
+}
+.date{
+  color: #888EB0;
+  
+}
+.name{
+  color: #888EB0;
+}
+
+.total{
+  font-weight: bold;
+  font-size: 1rem;
+  margin-inline-end: 1rem;
+  flex-shrink: 0;
+}
+
+.status {
+  border: 1px solid red;
+  font-weight: bold;
+  padding: 1rem;
+  height: 40%;
+  width: 38%;
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.status-bullet{
+  display: block;
+  border: 1px solid red;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 100vw;
+}
+img{
+  width: 0.7rem;
+}
+.icon{
+  /* border: 1px solid red; */
+  width: 2rem;
+}
+
+/* details styling endss here */

@@ -1,0 +1,331 @@
+.maincontainer {
+  /* background-color: black; */
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+/* side bar */
+.sidebar {
+  /* background-color: #1e2139; */
+  background-color: #373B53;
+  border-radius: 0 1.3rem 1.3rem 0;
+  width: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+/* logo container */
+.logocontainer {
+  background-color: #7c5dfa;
+  border-radius: 0 0 1.3rem 0 ;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+/* logo gradientstyle */
+.logocontainer > span {
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  bottom: 0;
+  border-radius: 1.3rem 0 1.3rem 0;
+  background-color: #9277ff;
+}
+svg {
+  z-index: 99;
+  fill: white;
+  width: 3.3rem;
+  height: 3.3rem;
+}
+
+/* profile pic and theme container */
+.picthemecontainer {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* theme toggler wrap */
+.themewrap {
+  display: flex;
+  justify-content: center;
+  height: 30%;
+}
+.themewrap > img {
+  width: 1.3rem;
+  height: 1.3rem;
+  cursor: pointer;
+}
+
+/* profile pic */
+.profilewrap {
+  border-block-start: 1px solid #858bb2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+}
+figure {
+  width: 5rem;
+  height: 5rem;
+  overflow: hidden;
+  border-radius: 100vw;
+  /* border: 1px solid green; */
+}
+
+/* content(the right side where the app is displayed) */
+/* Add or Edit invoice screen */
+/* the side modal */
+.add-edit-invoice{
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.463);
+  width: 100%;
+  height: 100%;
+  left: 0;
+}
+/* actual form */
+.form{
+  position: absolute;
+  background-color: white;
+  width: 40rem;
+  height: 100%;
+  border-radius: 0 1rem 1rem 0;
+  padding: 1rem;
+}
+
+/* content container */
+.contentwrapper {
+  overflow-y: auto; 
+  width: 100%;
+  display: flex;
+  padding-inline-start: 15%;
+  position: relative;
+}
+
+/* content */
+.content {
+  /* border: 2px solid green; */
+  width:50rem;
+  min-height: 100%;
+  padding-top: 1.5rem;
+}
+
+/*  menu starts here */
+.menu {
+  /* border: 2px solid red; */
+  min-height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  /* margin-block-start: 1rem; */
+  padding:  2rem 0;
+}
+/* text on the left */
+.menuhead {
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.headtext {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-block-end: -0.4rem;
+  letter-spacing: 0.1rem;
+}
+.totaltext {
+  font-size: 1rem;
+}
+
+/* controls on the right (add invoice and filter) */
+.menuoptions {
+  min-width: 21rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filterwrap {
+  /* border: 1px solid red; */
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.filterwrap > p {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+.filterwrap > img{
+  width: 0.7rem;
+  height: 0.6rem;
+}
+
+.filterwrap:hover > .filtermenu {
+  display: flex;
+}
+/* on Hover filter menu */
+.filtermenu {
+  background-color: white;
+  position: absolute;
+  border-radius: 0.5rem;
+  width: 140%;
+  height: 8.5rem;
+  top: 100%;
+  right: -20%;
+  box-shadow: 0 5px 5px 5px #e2e3f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-inline-start: 2rem;
+  display: none;
+}
+
+/* filter menu options */
+.option {
+  display: flex;
+  gap: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.filteroptions {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+label {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.option:hover > .filteroptions {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* add new Invoice */
+.newinvoice {
+  background-color: #7c5dfa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  height: 3rem;
+  border-radius: 100vw;
+  padding: 15px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.newinvoice:hover {
+  background-color: #9277ff;
+}
+
+.addinvoiceIcon {
+  background-color: white;
+  width: 2.3rem;
+  height: 2.3rem;
+  padding: 0.6rem;
+  border-radius: 100vw;
+  display: grid;
+  place-items: center;
+}
+.newinvoiceText {
+  font-weight: bold;
+  color: white;
+}
+/* menu ends here */
+
+/* Router outlet */
+.routeroutlet{
+  /* border: 1px solid blue; */
+  min-height: 10rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+
+
+
+
+/* media queries */
+
+@media (max-width: 900px) {
+  .maincontainer {
+    flex-direction: column;
+  }
+  /* side bar  starts here*/
+  .sidebar {
+    width: 100%;
+    height: 7rem;
+    flex-direction: row;
+    border-radius: 0;
+  }
+  /* logo container */
+  .logocontainer {
+    height: 100%;
+    width: 7rem;
+    border-radius: 0 1rem 1rem 0;
+  }
+  .picthemecontainer {
+    height: 100%;
+  }
+
+  /* profile pic and theme wrapper */
+  .picthemecontainer {
+    width: 12rem;
+    flex-direction: row;
+  }
+  /* theme wrap */
+  .themewrap {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  /* profilewrap   */
+  .profilewrap {
+    height: 100%;
+    width: 70%;
+    align-items: center;
+    border: none;
+    border-inline-start: 1px solid #858bb2;
+  }
+
+  /* side ends   here*/
+
+  /* content starts here */
+
+  .contentwrapper {
+    height: 100%;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .content {
+    min-height: 100%;
+  }
+  /* content ends here */
+}
+
+
+@media (max-width: 554px) {
+  .logocontainer {
+    width: 5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  
+}

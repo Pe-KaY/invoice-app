@@ -4,4 +4,16 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  user-select: none;
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  user-select: none;
 }
