@@ -82,7 +82,7 @@ figure {
 /* Add or Edit invoice screen */
 /* the side modal */
 .add-edit-invoice {
-  display: none;
+  /* display: none; */
   position: absolute;
   background-color: rgba(0, 0, 0, 0.463);
   width: 100%;
@@ -91,12 +91,14 @@ figure {
 }
 /* actual form */
 .form {
+  border: 2px solid red;
   position: absolute;
   background-color: white;
   width: 40rem;
   height: 100%;
   border-radius: 0 1rem 1rem 0;
   padding: 1rem;
+  overflow: hidden;
 }
 
 /* content container */

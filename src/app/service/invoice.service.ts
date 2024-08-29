@@ -10,7 +10,7 @@ import * as InvoiceActions from '../store/store.actions';
 export class InvoiceService {
   isDarkMode = false;
   viewInvoice = false;
-  modifyInvoice = false;
+  modifyInvoice = true;
   confirmDelete = false;
 
   constructor(private http: HttpClient, private store: Store) {}
