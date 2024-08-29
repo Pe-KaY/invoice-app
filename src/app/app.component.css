@@ -7,8 +7,7 @@
 
 /* side bar */
 .sidebar {
-  /* background-color: #1e2139; */
-  background-color: #373B53;
+  background-color: #373b53;
   border-radius: 0 1.3rem 1.3rem 0;
   width: 7rem;
   display: flex;
@@ -19,7 +18,7 @@
 /* logo container */
 .logocontainer {
   background-color: #7c5dfa;
-  border-radius: 0 0 1.3rem 0 ;
+  border-radius: 0 0 1.3rem 0;
   height: 15%;
   display: flex;
   justify-content: center;
@@ -82,7 +81,7 @@ figure {
 /* content(the right side where the app is displayed) */
 /* Add or Edit invoice screen */
 /* the side modal */
-.add-edit-invoice{
+.add-edit-invoice {
   display: none;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.463);
@@ -91,7 +90,7 @@ figure {
   left: 0;
 }
 /* actual form */
-.form{
+.form {
   position: absolute;
   background-color: white;
   width: 40rem;
@@ -102,8 +101,9 @@ figure {
 
 /* content container */
 .contentwrapper {
-  overflow-y: auto; 
+  overflow-y: auto;
   width: 100%;
+  min-width: 30rem;
   display: flex;
   padding-inline-start: 15%;
   position: relative;
@@ -112,9 +112,8 @@ figure {
 /* content */
 .content {
   /* border: 2px solid green; */
-  width:50rem;
+  width: 50rem;
   min-height: 100%;
-  padding-top: 1.5rem;
 }
 
 /*  menu starts here */
@@ -123,8 +122,8 @@ figure {
   min-height: 6rem;
   display: flex;
   justify-content: space-between;
-  /* margin-block-start: 1rem; */
-  padding:  2rem 0;
+  margin-block-start: 2rem;
+  padding: 2rem 0;
 }
 /* text on the left */
 .menuhead {
@@ -165,7 +164,7 @@ figure {
   font-weight: 500;
   font-size: 1.3rem;
 }
-.filterwrap > img{
+.filterwrap > img {
   width: 0.7rem;
   height: 0.6rem;
 }
@@ -245,18 +244,19 @@ label {
 /* menu ends here */
 
 /* Router outlet */
-.routeroutlet{
+.routeroutlet {
   /* border: 1px solid blue; */
   min-height: 10rem;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.5rem;
 }
 
-
-
-
+/* darkMode */
+.darkmode {
+  background-color: #1E2139;
+}
 
 /* media queries */
 
@@ -319,7 +319,6 @@ label {
   /* content ends here */
 }
 
-
 @media (max-width: 554px) {
   .logocontainer {
     width: 5rem;
@@ -327,5 +326,4 @@ label {
 }
 
 @media (max-width: 500px) {
-  
 }

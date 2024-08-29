@@ -1,5 +1,5 @@
-<div class="maincontainer">
-  <div class="sidebar">
+<div class="maincontainer light" [class.dark]="service.isDarkMode">
+  <div class="sidebar" [class.darkmode]="service.isDarkMode">
     <div class="logocontainer">
       <!-- logo svg -->
       <svg
@@ -19,7 +19,7 @@
     </div>
     <div class="picthemecontainer">
       <div class="themewrap">
-        <img src="../assets/icons/moon.svg" alt="moon" />
+        <img (click)="toggleDarkMode()" [src]="imgUrl" alt="theme icon" />
       </div>
       <div class="profilewrap">
         <figure>
@@ -30,45 +30,69 @@
   </div>
   <div class="contentwrapper">
     <div class="content">
-      <div class="menu">
-        <div class="menuhead">
-          <p class="headtext">Invoices</p>
-          <p class="totaltext">There are 12 total invoices</p>
-        </div>
-        <div class="menuoptions">
-          <div class="filterwrap">
-            <p>Filter by status</p>
-            <img src="../assets/icons/filter.png" alt="filter icon" />
+      <!-- Menu -->
 
-            <div class="filtermenu">
-              <span class="option">
-                <input class="filteroptions" type="checkbox" id="draft" />
-                <label for="draft"><p>Draft</p></label>
+      <!-- displays menu when not viewing an invoice -->
+      <ng-container *ngIf="!service.viewInvoice">
+        <div class="menu">
+          <div class="menuhead">
+            <p class="headtext" [class.darkmodeText]="service.isDarkMode">
+              Invoices
+            </p>
+            <p class="totaltext" [class.darkmodeText]="service.isDarkMode">
+              There are 12 total invoices
+            </p>
+          </div>
+          <div class="menuoptions">
+            <div class="filterwrap">
+              <p [class.darkmodeText]="service.isDarkMode">Filter by status</p>
+              <img src="../assets/icons/filter.png" alt="filter icon" />
+
+              <div class="filtermenu">
+                <span class="option">
+                  <input class="filteroptions" type="checkbox" id="draft" />
+                  <label for="draft"><p>Draft</p></label>
+                </span>
+                <span class="option">
+                  <input class="filteroptions" type="checkbox" id="pending" />
+                  <label for="pending"><p>Pending</p></label>
+                </span>
+                <span class="option">
+                  <input class="filteroptions" type="checkbox" id="paid" />
+                  <label for="paid"><p>Paid</p></label>
+                </span>
+              </div>
+            </div>
+            <div class="newinvoice">
+              <span class="addinvoiceIcon">
+                <img src="../assets/icons/addinvoice.png" alt="add invoice" />
               </span>
-              <span class="option">
-                <input class="filteroptions" type="checkbox" id="pending" />
-                <label for="pending"><p>Pending</p></label>
-              </span>
-              <span class="option">
-                <input class="filteroptions" type="checkbox" id="paid" />
-                <label for="paid"><p>Paid</p></label>
-              </span>
+              <p class="newinvoiceText">New Invoice</p>
             </div>
           </div>
-          <div class="newinvoice">
-            <span class="addinvoiceIcon">
-              <img src="../assets/icons/addinvoice.png" alt="add invoice" />
-            </span>
-            <p class="newinvoiceText">New Invoice</p>
-          </div>
         </div>
-      </div>
+      </ng-container>
       <div class="routeroutlet">
-        <ng-container *ngIf="invoices$ | async as invoices">
-          <app-invoice *ngFor="let invoice of invoices" [invoice]="invoice"></app-invoice>
+        <!-- router outlet div to switch between invoices and view invoice  -->
+
+        <!--Displays Invoices when not viewing an invoice-->
+        <ng-container *ngIf="!service.viewInvoice">
+          <ng-container *ngIf="invoices$ | async as invoices">
+            <app-invoice
+              *ngFor="let invoice of invoices"
+              [invoice]="invoice"
+              (click)="service.viewInvoiceToggle(invoice)"
+            ></app-invoice>
+          </ng-container>
+        </ng-container>
+
+        <!-- Displays Invoice when viewing an invoice -->
+        <ng-container *ngIf="service.viewInvoice">
+          <app-view-invoice></app-view-invoice>
         </ng-container>
       </div>
     </div>
+
     <!-- Add or Edit Invoice Side Modal -->
     <div class="add-edit-invoice">
       <!-- form to edit or add invoice -->

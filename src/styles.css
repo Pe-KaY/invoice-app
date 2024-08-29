@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   user-select: none;
+  line-height: calc(1em + 0.5rem);
 }
 
 body {
@@ -16,4 +17,16 @@ svg {
   display: block;
   max-width: 100%;
   user-select: none;
+}
+
+
+.light{
+  background-color: #F8F8F8;
+}
+
+.dark{
+  background-color: #141625;
+}
+.darkmodeText{
+  color: white;
 }

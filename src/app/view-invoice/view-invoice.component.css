@@ -1,0 +1,269 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-block-start: 1rem;
+}
+
+.normaltext {
+  color: #7e88c3;
+}
+.bold {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* section 1 */
+.backwrapper {
+  /* border: 2px solid red; */
+  width: fit-content;
+  min-height: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* back arrow svg */
+svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* section 2 */
+.controlmenu {
+  /* border: 2px solid red; */
+  background-color: white;
+  box-shadow: 0 5px 5px 5px #e2e3f053;
+  min-height: 6rem;
+  border-radius: 0.5rem;
+  min-height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+}
+
+/* status on left */
+
+.statuswrapper {
+  /* border: 1px solid red; */
+  width: 30%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.status {
+  font-weight: bold;
+  /* box-shadow: 0 5px 5px 5px #e2e3f053; */
+  padding: 1rem;
+  height: 40%;
+  width: 38%;
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.status-bullet {
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 100vw;
+}
+/* controls on right */
+.controls {
+  /* border: 2px solid green; */
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 0.5rem;
+}
+/* edit button */
+.edit {
+  font-weight: bold;
+  background-color: #f9fafe;
+  width: 5rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 4rem;
+  cursor: pointer;
+}
+.delete {
+  font-weight: bold;
+  background-color: #ec5757;
+  color: white;
+  width: 5.5rem;
+  height: 3rem;
+  padding: 0 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 1.5rem;
+  cursor: pointer;
+}
+.mark {
+  font-weight: bold;
+  color: white;
+  background-color: #7c5dfa;
+  width: 9rem;
+  height: 3rem;
+  padding: 0 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 4rem;
+  cursor: pointer;
+}
+/* section 2 ends here */
+
+/* section 3 starts here */
+/* details wrapper */
+.details {
+  /* border: 2px solid red; */
+  min-height: fit-content;
+  background-color: white;
+  box-shadow: 0 5px 5px 5px #e2e3f053;
+  padding: 3rem 3rem;
+  border-radius: 0.5rem;
+  margin-block-end: 2rem;
+}
+
+/* top details */
+.top-details {
+  /* border: 1px solid blue; */
+  min-height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  margin-block-end: 1rem;
+}
+
+/* item info */
+.iteminfowrapper {
+  /* border: 1px solid red; */
+  color: #888eb0;
+}
+
+.id {
+  font-weight: bold;
+  color: black;
+  font-size: 1.2rem;
+}
+.id > span {
+  color: #7e88c3;
+}
+
+/* address */
+.addresswrapper {
+  color: #7e88c3;
+}
+/* section 3 endss here */
+
+/* section 4 starts here */
+/* bottom details */
+.bottom-details {
+  /* border: 2px solid pink; */
+  min-height: 12rem;
+  display: flex;
+}
+
+.dates {
+  /* border: 1px solid red; */
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.addresses {
+  width: 30%;
+  /* border: 2px solid red; */
+}
+/* section 4 ends here */
+
+/* footer section starts here */
+
+.footer {
+  /* border: 1px solid red; */
+  min-height: 10rem;
+}
+
+/* item info wrapper */
+.iteminfo {
+  /* border: 2px solid blue; */
+  background-color: #f9fafe;
+  min-height: 5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/* item name , quantity and price headers */
+.titles {
+  /* border: 2px solid yellow; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemname {
+  width: 50%;
+}
+.itemquantity {
+  text-align: center;
+  width: 10%;
+  /* border: 1px solid green; */
+}
+.itemprice {
+  text-align: end;
+  width: 15%;
+  /* border: 1px solid green; */
+}
+.itemtotal {
+  text-align: end;
+  width: 15%;
+  /* border: 1px solid green; */
+}
+
+/* amount due wrapper */
+.amountdue {
+  /* border: 2px solid purple; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: #373b53;
+  padding: 2rem;
+}
+.amountduetext {
+  color: white;
+}
+.totaltext {
+  font-size: 1.7rem;
+  color: white;
+}
+/* footer section endss here */
+
+/* dark Mode */
+
+.darkmodeTextBold {
+  color: white;
+}
+.darkmodeText {
+  color: #dfe3fa;
+}
+.darkmodeBackground {
+  background-color: #1e2139;
+  box-shadow: none;
+}
+
+.amountdueDark {
+  background-color: #0c0e16;
+}
+.iteminfoDark {
+  background-color: #252945;
+}
