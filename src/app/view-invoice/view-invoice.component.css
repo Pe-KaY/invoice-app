@@ -74,6 +74,7 @@ svg {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 100vw;
+  /* border: 2px solid red; */
 }
 /* controls on right */
 .controls {
@@ -265,5 +266,8 @@ svg {
   background-color: #0c0e16;
 }
 .iteminfoDark {
+  background-color: #252945;
+}
+.editDarkmode{
   background-color: #252945;
 }

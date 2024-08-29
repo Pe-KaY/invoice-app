@@ -2,19 +2,19 @@ import { Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadInvoices } from './store/store.actions';
-import { InvoiceComponent } from './invoice/invoice.component';
 import { selectInvoices } from './selectors/invoice.selectors';
-import { AppState } from './store/store.reducer';
 import { Invoice } from '../interfaces/invoice-interface';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { InvoiceService } from './service/invoice.service';
+import { InvoiceComponent } from './invoice/invoice.component';
 import { ViewInvoiceComponent } from './view-invoice/view-invoice.component';
+import { EditAddInvoiceComponent } from './edit-add-invoice/edit-add-invoice.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, InvoiceComponent, CommonModule,ViewInvoiceComponent],
+  imports: [RouterOutlet, InvoiceComponent, CommonModule,ViewInvoiceComponent,EditAddInvoiceComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

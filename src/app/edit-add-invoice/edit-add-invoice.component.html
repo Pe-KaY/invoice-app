@@ -1,1 +1,336 @@
-<p>edit-add-invoice works!</p>
+<div class="container">
+  <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+    <!-- DETAILS STARTS HERE -->
+
+    <div class="details">
+      <!-- heading -->
+      <h1>New Invoice</h1>
+
+      <!-- sender details -->
+      <fieldset formGroupName="senderAddress">
+        <div class="senderinfo">
+          <p>Bill From</p>
+          <!--sender street address -->
+          <div class="textinput">
+            <label
+              [ngClass]="{
+                invalidText:
+                  formSubmitted &&
+                  invoiceForm.get('senderAddress.street')?.invalid
+              }"
+              for="senderstreet"
+              >Street Address</label
+            >
+            <input
+              [ngClass]="{
+                invalid:
+                  formSubmitted &&
+                  invoiceForm.get('senderAddress.street')?.invalid
+              }"
+              formControlName="street"
+              type="text"
+              name=""
+              id="senderstreet"
+            />
+          </div>
+          <!-- sender city postal country -->
+          <div class="addresses">
+            <!-- sender city postal -->
+            <div class="citypostal">
+              <span>
+                <label
+                  [ngClass]="{
+                    invalidText:
+                      formSubmitted &&
+                      invoiceForm.get('senderAddress.city')?.invalid
+                  }"
+                  for="sendercity"
+                  >City</label
+                >
+                <input
+                  [ngClass]="{
+                    invalid:
+                      formSubmitted &&
+                      invoiceForm.get('senderAddress.city')?.invalid
+                  }"
+                  formControlName="city"
+                  type="text"
+                  name=""
+                  id="sendercity"
+                />
+              </span>
+              <span>
+                <label
+                  [ngClass]="{
+                    invalidText:
+                      formSubmitted &&
+                      invoiceForm.get('senderAddress.postCode')?.invalid
+                  }"
+                  for="senderpostal"
+                  >Postal Code</label
+                >
+                <input
+                  [ngClass]="{
+                    invalid:
+                      formSubmitted &&
+                      invoiceForm.get('senderAddress.postCode')?.invalid
+                  }"
+                  formControlName="postCode"
+                  type="text"
+                  name=""
+                  id="senderpostal"
+                />
+              </span>
+            </div>
+            <!-- sender country -->
+            <div class="country">
+              <label
+                [ngClass]="{
+                  invalidText:
+                    formSubmitted &&
+                    invoiceForm.get('senderAddress.country')?.invalid
+                }"
+                for="sendercountry"
+                >Country</label
+              >
+              <input
+                [ngClass]="{
+                  invalid:
+                    formSubmitted &&
+                    invoiceForm.get('senderAddress.country')?.invalid
+                }"
+                formControlName="country"
+                type="text"
+                name=""
+                id="sendercountry"
+              />
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- receipient details -->
+
+      <div class="receipientinfo">
+        <p>Bill To</p>
+        <!--clients street address -->
+        <div class="textinput">
+          <label
+            [ngClass]="{
+              invalidText:
+                formSubmitted && invoiceForm.get('clientName')?.invalid
+            }"
+            for="clientsname"
+            >Clients's Name</label
+          >
+          <input
+            [ngClass]="{
+              invalid: formSubmitted && invoiceForm.get('clientName')?.invalid
+            }"
+            type="text"
+            name=""
+            formControlName="clientName"
+            id="clientsname"
+          />
+        </div>
+        <div class="textinput">
+          <label
+            [ngClass]="{
+              invalidText:
+                formSubmitted && invoiceForm.get('clientEmail')?.invalid
+            }"
+            for="clientemail"
+            >Client's Email</label
+          >
+          <input
+            [ngClass]="{
+              invalid: formSubmitted && invoiceForm.get('clientEmail')?.invalid
+            }"
+            formControlName="clientEmail"
+            type="text"
+            name=""
+            id="clientemail"
+          />
+        </div>
+
+        <fieldset formGroupName="clientAddress">
+          <div class="textinput">
+            <label
+              [ngClass]="{
+                invalidText:
+                  formSubmitted &&
+                  invoiceForm.get('clientAddress.street')?.invalid
+              }"
+              for="clientstreet"
+              >Street Address</label
+            >
+            <input
+              [ngClass]="{
+                invalid:
+                  formSubmitted &&
+                  invoiceForm.get('clientAddress.street')?.invalid
+              }"
+              formControlName="street"
+              type="text"
+              name=""
+              id="clientstreet"
+            />
+          </div>
+          <!-- clientscity postal country -->
+          <div class="addresses">
+            <!-- clients city postal -->
+            <div class="citypostal">
+              <span>
+                <label
+                  [ngClass]="{
+                    invalidText:
+                      formSubmitted &&
+                      invoiceForm.get('clientAddress.city')?.invalid
+                  }"
+                  for="clientcity"
+                  >City</label
+                >
+                <input
+                  [ngClass]="{
+                    invalid:
+                      formSubmitted &&
+                      invoiceForm.get('clientAddress.city')?.invalid
+                  }"
+                  formControlName="city"
+                  type="text"
+                  name=""
+                  id="clientcity"
+                />
+              </span>
+              <span>
+                <label
+                  [ngClass]="{
+                    invalidText:
+                      formSubmitted &&
+                      invoiceForm.get('clientAddress.postCode')?.invalid
+                  }"
+                  for="clientpostal"
+                  >Postal Code</label
+                >
+                <input
+                  [ngClass]="{
+                    invalid:
+                      formSubmitted &&
+                      invoiceForm.get('clientAddress.postCode')?.invalid
+                  }"
+                  formControlName="postCode"
+                  type="text"
+                  name=""
+                  id="clientpostal"
+                />
+              </span>
+            </div>
+            <!-- clients country -->
+            <div class="country">
+              <label
+                [ngClass]="{
+                  invalidText:
+                    formSubmitted &&
+                    invoiceForm.get('clientAddress.country')?.invalid
+                }"
+                for="clientcountry"
+                >Country</label
+              >
+              <input
+                [ngClass]="{
+                  invalid:
+                    formSubmitted &&
+                    invoiceForm.get('senderAddress.country')?.invalid
+                }"
+                formControlName="country"
+                type="text"
+                name=""
+                id="clientcountry"
+              />
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="invoicedatesContainer">
+          <div class="invoicedate">
+            <label for="invoicedate">Invoice Date</label>
+            <input
+              formControlName="createdAt"
+              type="date"
+              name=""
+              id="invoicedate"
+            />
+          </div>
+          <div class="paymentterms">
+            <label>Payment Terms</label>
+            <div class="termscontainer"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- items -->
+      <div class="items">
+        <p>Item List</p>
+
+        <fieldset formArrayName="items">
+          <div
+            class="itemcontainer"
+            *ngFor="let item of itemsFormArray.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <!-- item name -->
+            <div class="item-name">
+              <label for="item-name">Item Name</label>
+              <input
+                [ngClass]="{
+                  invalid: formSubmitted && item.get('name')?.invalid
+                }"
+                formControlName="name"
+                type="text"
+                id="item-name"
+              />
+            </div>
+            <!-- item quantity -->
+            <div class="item-quantity">
+              <label for="item-quantity">Qty.</label>
+              <input
+                formControlName="quantity"
+                type="number"
+                id="item-quantity"
+              />
+            </div>
+            <!-- item price -->
+            <div class="item-price">
+              <label for="item-price">Price</label>
+              <input
+                formControlName="price"
+                type="number"
+                formControlName="price"
+              />
+            </div>
+            <!-- item total -->
+            <div class="item-total">
+              <label for="item-total">Total</label>
+              <input formControlName="total" readonly />
+            </div>
+            <!-- this  removes items from the form -->
+            <div class="remove-item">
+              <img src="../../assets/icons/deleteitem.png" alt="remove icon" />
+            </div>
+          </div>
+        </fieldset>
+        <!-- this button adds items to the form -->
+        <button class="additem" (click)="onAddItem()" type="button">
+          <span class="plusicon">+</span>
+          <p class="additemtext">Add New Item</p>
+        </button>
+      </div>
+    </div>
+    <!-- DETAILS ENDS HERE -->
+
+    <!-- form control buttons -->
+    <div class="formcontrolbuttons">
+      <button class="save" type="submit">Save Changes</button>
+    </div>
+  </form>
+</div>

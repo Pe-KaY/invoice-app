@@ -28,7 +28,10 @@
       </div>
     </div>
   </div>
-  <div class="contentwrapper">
+  <div
+    class="contentwrapper"
+    [style.overflow-y]="service.modifyInvoice ? 'hidden' : 'auto'"
+  >
     <div class="content">
       <!-- Menu -->
 
@@ -94,9 +97,11 @@
     </div>
 
     <!-- Add or Edit Invoice Side Modal -->
-    <div class="add-edit-invoice">
+    <div *ngIf="service.modifyInvoice" class="add-edit-invoice">
       <!-- form to edit or add invoice -->
-      <div class="form"></div>
+      <div class="form">
+        <app-edit-add-invoice></app-edit-add-invoice>
+      </div>
     </div>
   </div>
 </div>
