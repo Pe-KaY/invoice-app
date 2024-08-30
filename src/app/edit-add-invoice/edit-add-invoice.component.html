@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="invoiceForm" >
     <!-- DETAILS STARTS HERE -->
 
     <div class="details">
@@ -268,6 +268,26 @@
         </div>
       </div>
 
+      <!-- project description -->
+      <div class="projectdescription">
+        <label
+          [ngClass]="{
+            invalidText:
+              formSubmitted && invoiceForm.get('description')?.invalid
+          }"
+          for="projectdescription"
+          >Project Description</label
+        >
+        <input
+          [ngClass]="{
+            invalid: formSubmitted && invoiceForm.get('description')?.invalid
+          }"
+          formControlName="description"
+          type="text"
+          id="projectdescription"
+        />
+      </div>
+
       <!-- items -->
       <div class="items">
         <p>Item List</p>
@@ -314,11 +334,12 @@
               <input formControlName="total" readonly />
             </div>
             <!-- this  removes items from the form -->
-            <div class="remove-item">
+            <div (click)="onRemoveItem(i)" class="remove-item">
               <img src="../../assets/icons/deleteitem.png" alt="remove icon" />
             </div>
           </div>
         </fieldset>
+
         <!-- this button adds items to the form -->
         <button class="additem" (click)="onAddItem()" type="button">
           <span class="plusicon">+</span>
@@ -330,7 +351,13 @@
 
     <!-- form control buttons -->
     <div class="formcontrolbuttons">
-      <button class="save" type="submit">Save Changes</button>
+      <div class="discardwrap">
+        <button (click)="onDiscard()" class="discard">Discard</button>
+      </div>
+      <div class="savewrap">
+        <button (click)="onSaveAsDraft()" class="draft" type="submit">Save As Draft</button>
+        <button (click)="onSave()" class="save" type="submit">Save & Send</button>
+      </div>
     </div>
   </form>
 </div>

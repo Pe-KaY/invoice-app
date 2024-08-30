@@ -13,9 +13,9 @@ import {
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Invoice } from '../../interfaces/invoice-interface';
-import { AppState } from '../store/store.reducer';
 import * as InvoiceActions from '../store/store.actions';
 import { selectEditedInvoice } from '../selectors/invoice.selectors';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-edit-add-invoice',
@@ -40,7 +40,7 @@ export class EditAddInvoiceComponent {
       id: [``],
       createdAt: ['', Validators.required],
       paymentDue: [''],
-      description: ['hello'],
+      description: ['', Validators.required],
       paymentTerms: [30, Validators.required],
       clientName: ['', Validators.required],
       clientEmail: ['', [Validators.required, Validators.email]],
@@ -62,6 +62,16 @@ export class EditAddInvoiceComponent {
     });
   }
 
+  // ngOnInit
+  ngOnInit() {
+    this.editedInvoice$.subscribe((invoice) => {
+      if (invoice) {
+        this.invoiceForm.patchValue(invoice);
+        this.setItems(invoice.items); // Initialize the items array if editing
+      }
+    });
+  }
+
   //  gets the items form array
   get itemsFormArray(): FormArray {
     return this.invoiceForm.get('items') as FormArray;
@@ -77,42 +87,97 @@ export class EditAddInvoiceComponent {
     });
     this.itemsFormArray.push(newItem);
   }
+  // sets items in the form when editing
+  setItems(items: any[]) {
+    const itemsFormArray = this.itemsFormArray;
+    items.forEach((item) => {
+      itemsFormArray.push(
+        this.fb.group({
+          name: [item.name, Validators.required],
+          quantity: [item.quantity, Validators.required],
+          price: [item.price, Validators.required],
+          total: [item.total, Validators.required],
+        })
+      );
+    });
+  }
 
   //  removes an item from the form
   onRemoveItem(index: number) {
     this.itemsFormArray.removeAt(index);
   }
 
-  // submits the form
-  onSubmit() {
+  // save invoice
+  onSave() {
+    // checks if form is not valid
     if (this.invoiceForm.invalid) {
       this.formSubmitted = true;
+      return;
     }
     // if form is valid
-    if (this.invoiceForm.valid) {
-      console.log('form is valid');
+    // gets form data
+    const invoice: Invoice = this.invoiceForm.value;
 
-      const invoice: Invoice = this.invoiceForm.value;
-
-      if (invoice.id) {
-        this.store.dispatch(InvoiceActions.editInvoice({ invoice }));
-      } else {
-        invoice.id = this.generateRandomId();
-        this.store.dispatch(InvoiceActions.addInvoice({ invoice }));
-      }
+    // if form has id then its being edited
+    if (invoice.id) {
+      // update store edited invoice with currently editing invoice
+      this.store.dispatch(InvoiceActions.updateInvoice({ invoice }));
       // hide the form
-      this.service.modifyInvoice = false;
-
+      this.service.modifyInvoiceToggle();
       // Optionally, reset the form after submission
       this.invoiceForm.reset();
+      return;
+    } else {
+      // add id for new invoices
+      invoice.id = this.generateRandomId();
+      // set status to pending
+      invoice.status = 'pending';
+      // add to store
+      this.store.dispatch(InvoiceActions.addInvoice({ invoice }));
     }
+    // hide the form
+    this.service.modifyInvoiceToggle();
+    // back to invoice list
+    this.service.closeViewInvoice();
+    // Optionally, reset the form after submission
+    this.invoiceForm.reset();
+  }
+
+  // save as draft
+  onSaveAsDraft() {
+    // checks if form is valid
+    if (this.invoiceForm.invalid) {
+      this.formSubmitted = true;
+      return;
+    }
+    // gets form data
+    const invoice: Invoice = this.invoiceForm.value;
+    //set status to draft
+    invoice.status = 'draft';
+    // add id
+    invoice.id = this.generateRandomId();
+    this.store.dispatch(InvoiceActions.addInvoice({ invoice }));
+    // hide the form
+    this.service.modifyInvoiceToggle();
+    // back to invoice list
+    this.service.closeViewInvoice();
+    // Optionally, reset the form after submission
+    this.invoiceForm.reset();
+  }
+
+  // discard the form
+  onDiscard() {
+    // hide the form
+    this.service.modifyInvoiceToggle();
+    // clears form
+    this.invoiceForm.reset();
   }
 
   // random id generator
   generateRandomId() {
     // Generate the first 3 letters
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const randomLetters = Array.from({ length: 3 }, () =>
+    const randomLetters = Array.from({ length: 2 }, () =>
       letters.charAt(Math.floor(Math.random() * letters.length))
     ).join('');
 
