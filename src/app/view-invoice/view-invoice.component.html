@@ -77,12 +77,12 @@
         </span>
       </div>
       <div class="controls">
-        <span (click)="service.modifyInvoiceToggle()" class="edit" [class.darkmodeTextBold]="service.isDarkMode"
+        <span (click)="editButton()" class="edit" [class.darkmodeTextBold]="service.isDarkMode"
         [class.editDarkmode]="service.isDarkMode"
           >Edit</span
         >
         <span class="delete">Delete</span>
-        <span class="mark">Mark as Pending</span>
+        <span (click)="changeStatus(invoice)" class="mark">Mark as {{invoice.status === 'paid' ? 'pending' : 'paid'}}</span>
       </div>
     </div>
 

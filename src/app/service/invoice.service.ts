@@ -8,10 +8,16 @@ import * as InvoiceActions from '../store/store.actions';
   providedIn: 'root',
 })
 export class InvoiceService {
+  // dark mode control
   isDarkMode = false;
+  // view invoice control(opens view invoice)
   viewInvoice = false;
+  // modify invoice control(opens form)
   modifyInvoice = false;
+  // confirm delete modal control
   confirmDelete = false;
+  // editbutton clicked
+  editButtonClicked = false;
 
   constructor(private http: HttpClient, private store: Store) {}
 
@@ -26,6 +32,8 @@ export class InvoiceService {
     this.store.dispatch(InvoiceActions.clearEditedInvoice());
     // open form
     this.modifyInvoiceToggle();
+    // set edit button clicked to false
+    this.editButtonClicked = false;
   }
 
   // toggle dark mode

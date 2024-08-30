@@ -12,7 +12,7 @@
   </span>
   <span class="itemtotal">
     <p class="normaltext" [class.darkmodeTextBold]="service.isDarkMode">
-      {{ items.total | currency : "EUR" }}
+      {{ items.quantity * items.price | currency : "EUR" }}
     </p>
   </span>
 </div>

@@ -125,7 +125,7 @@ input {
   box-shadow: 0 -5px 10px 5px #e2e3f0;
   min-height: 4rem;
   display: flex;
-  /* border: 2px solid red; */
+  border: 2px solid red;
 }
 
 /* discard wrap */

@@ -20,7 +20,7 @@ export interface Invoice {
   paymentTerms: number;
   clientName: string;
   clientEmail: string;
-  status: 'pending' | 'paid' | 'draft'; // Status as string literal union
+  status: string // Status as string literal union
   senderAddress: Address;
   clientAddress: Address;
   items: Item[];

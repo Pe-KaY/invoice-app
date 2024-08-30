@@ -115,11 +115,23 @@ export class EditAddInvoiceComponent {
       return;
     }
     // if form is valid
+
     // gets form data
     const invoice: Invoice = this.invoiceForm.value;
-
+    // Calculate total based on items
+    let total = 0;
+    if (invoice.items && invoice.items.length > 0) {
+      invoice.items.forEach((item) => {
+        total += item.quantity * item.price; // Calculate total as quantity * price
+        // calculate individual item total
+        item.total = item.quantity * item.price;
+      });
+      invoice.total = total;
+    }
     // if form has id then its being edited
     if (invoice.id) {
+      // calculate total
+
       // update store edited invoice with currently editing invoice
       this.store.dispatch(InvoiceActions.updateInvoice({ invoice }));
       // hide the form
@@ -128,6 +140,7 @@ export class EditAddInvoiceComponent {
       this.invoiceForm.reset();
       return;
     } else {
+      // if form has no id then its a new invoice
       // add id for new invoices
       invoice.id = this.generateRandomId();
       // set status to pending
@@ -187,6 +200,7 @@ export class EditAddInvoiceComponent {
     ).join('');
 
     // Combine letters and digits
+
     return (randomLetters + randomDigits).toUpperCase();
   }
 }
