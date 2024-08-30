@@ -10,7 +10,7 @@ import * as InvoiceActions from '../store/store.actions';
 export class InvoiceService {
   isDarkMode = false;
   viewInvoice = false;
-  modifyInvoice = true;
+  modifyInvoice = false;
   confirmDelete = false;
 
   constructor(private http: HttpClient, private store: Store) {}
@@ -20,14 +20,24 @@ export class InvoiceService {
     return this.http.get<Invoice[]>('../../assets/invoiceJson/data.json');
   }
 
+  // add new invoice
+  addNewInvoice() {
+    // clear edited invoice state when adding new invoice
+    this.store.dispatch(InvoiceActions.clearEditedInvoice());
+    // open form
+    this.modifyInvoiceToggle();
+  }
+
   // toggle dark mode
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
   }
   // toggle view invoice
   viewInvoiceToggle(invoice: Invoice) {
+    // opens form
     this.viewInvoice = !this.viewInvoice;
-    this.store.dispatch(InvoiceActions.editInvoice({invoice}));
+    // set state edited invoice to current invoice
+    this.store.dispatch(InvoiceActions.editInvoice({ invoice }));
   }
 
   // closes view invoice
@@ -37,15 +47,25 @@ export class InvoiceService {
 
   // toggle modify invoice(adding and editing)
   modifyInvoiceToggle() {
+    this.scrollToTop();
     this.modifyInvoice = !this.modifyInvoice;
   }
-
+  // clear edited invoice
+  clearEditedInvoice() {
+    this.store.dispatch(InvoiceActions.clearEditedInvoice());
+  }
   // toggle confirm delete modal
   confirmDeleteToggle() {
     this.confirmDelete = !this.confirmDelete;
   }
 
-
+  // scroll to top when modals open
+  scrollToTop() {
+    const top = document.querySelector('.contentwrapper');
+    top?.scrollTo({
+      top: 0,
+    });
+  }
 
   // Styles background based on status
   getStatusText(status: string): any {
@@ -82,7 +102,7 @@ export class InvoiceService {
       case 'pending':
         return { backgroundColor: '#FF8F00' };
       case 'draft':
-        if(this.isDarkMode) return{ backgroundColor: 'white'};
+        if (this.isDarkMode) return { backgroundColor: 'white' };
         return { backgroundColor: '#373B53' };
       default:
         return {};
