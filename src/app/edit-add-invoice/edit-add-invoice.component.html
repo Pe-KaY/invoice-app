@@ -300,29 +300,31 @@
           >
             <!-- item name -->
             <div class="item-name">
-              <label for="item-name">Item Name</label>
+              <label for="item-name-{{i}}">Item Name</label>
               <input
+              #{{i}}
                 [ngClass]="{
                   invalid: formSubmitted && item.get('name')?.invalid
                 }"
                 formControlName="name"
                 type="text"
-                id="item-name"
+                id="item-name-{{i}}"
               />
             </div>
             <!-- item quantity -->
             <div class="item-quantity">
-              <label for="item-quantity">Qty.</label>
+              <label for="item-quantity-{{i}}">Qty.</label>
               <input
                 formControlName="quantity"
                 type="number"
-                id="item-quantity"
+                id="item-quantity-{{i}}"
               />
             </div>
             <!-- item price -->
             <div class="item-price">
-              <label for="item-price">Price</label>
+              <label for="item-price-{{i}}">Price</label>
               <input
+               id="item-price-{{i}}"
                 formControlName="price"
                 type="number"
                 formControlName="price"
@@ -331,7 +333,9 @@
             <!-- item total -->
             <div class="item-total">
               <label for="item-total">Total</label>
-              <input formControlName="total" readonly />
+              <input 
+              [value]="(item.get('quantity')?.value || 0) * (item.get('price')?.value || 0)"
+              formControlName="total" readonly />
             </div>
             <!-- this  removes items from the form -->
             <div (click)="onRemoveItem(i)" class="remove-item">
@@ -350,13 +354,24 @@
     <!-- DETAILS ENDS HERE -->
 
     <!-- form control buttons -->
-    <div class="formcontrolbuttons">
-      <div class="discardwrap">
+    <div 
+    [style.justify-content]="service.editButtonClicked ? 'flex-end' : 'space-between'"
+    class="formcontrolbuttons">
+      <!-- button shows when adding new -->
+      <div class="discardwrap" *ngIf="!service.editButtonClicked">
         <button (click)="onDiscard()" class="discard">Discard</button>
       </div>
       <div class="savewrap">
-        <button (click)="onSaveAsDraft()" class="draft" type="submit">Save As Draft</button>
-        <button (click)="onSave()" class="save" type="submit">Save & Send</button>
+        <!-- buttons show when adding New -->
+        <ng-container *ngIf="!service.editButtonClicked">
+          <button (click)="onSaveAsDraft()" class="draft" type="submit">Save As Draft</button>
+          <button (click)="onSave()" class="save" type="submit">Save & Send</button>
+        </ng-container>
+        <!-- buttons show when editing -->
+        <ng-container *ngIf="service.editButtonClicked">
+          <button (click)="onDiscard()" class="draft" type="submit">Cancel</button>
+          <button (click)="onSave()" class="save" type="submit">Save changes</button>
+        </ng-container>
       </div>
     </div>
   </form>

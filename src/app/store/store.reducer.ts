@@ -20,9 +20,7 @@ export const invoiceReducer = createReducer(
   })),
   on(InvoiceActions.updateInvoice, (state, { invoice }) => ({
     ...state,
-    invoices: state.invoices.map((i) =>
-      i.id === invoice.id ? invoice : i
-    ),
+    invoices: state.invoices.map((i) => (i.id === invoice.id ? invoice : i)),
     editedInvoice: invoice,
   })),
   on(InvoiceActions.editInvoice, (state, { invoice }) => ({
@@ -36,24 +34,6 @@ export const invoiceReducer = createReducer(
   on(InvoiceActions.clearEditedInvoice, (state) => ({
     ...state,
     editedInvoice: null,
-  })),
-  on(InvoiceActions.markAsPending, (state, { id }) => ({
-    ...state,
-    invoice: state.invoices.map((invoice) =>
-      invoice.id === id ? { ...invoice, status: 'pending' } : invoice
-    ),
-  })),
-  on(InvoiceActions.markAsDone, (state, { id }) => ({
-    ...state,
-    invoice: state.invoices.map((invoice) =>
-      invoice.id === id ? { ...invoice, status: 'paid' } : invoice
-    ),
-  })),
-  on(InvoiceActions.markAsDraft, (state, { id }) => ({
-    ...state,
-    invoice: state.invoices.map((invoice) =>
-      invoice.id === id ? { ...invoice, status: 'draft' } : invoice
-    ),
   })),
   on(InvoiceActions.loadInvoicesSuccess, (state, { invoices }) => ({
     ...state,
