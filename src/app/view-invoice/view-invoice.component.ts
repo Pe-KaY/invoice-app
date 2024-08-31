@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { InvoiceService } from '../service/invoice.service';
 import { InvoiceItemsComponent } from '../invoice-items/invoice-items.component';
 import { updateInvoice } from '../store/store.actions';
+import { deleteInvoice } from '../store/store.actions';
 
 @Component({
   selector: 'app-view-invoice',
@@ -40,5 +41,16 @@ export class ViewInvoiceComponent {
     this.store.dispatch(
       updateInvoice({ invoice: { ...invoice, status: updateStatus } })
     );
+  }
+
+  // open confirm delete modal
+  confirmDelete() {
+    this.service.confirmDeleteToggle();
+  }
+  // delete invoice
+  deleteInvoice(id: string) {
+   this.store.dispatch(deleteInvoice({ id }));
+    this.service.confirmDeleteToggle();
+    this.service.closeViewInvoice();
   }
 }

@@ -51,6 +51,7 @@ export class InvoiceService {
   // closes view invoice
   closeViewInvoice() {
     this.viewInvoice = false;
+    this.scrollToTop();
   }
 
   // toggle modify invoice(adding and editing)

@@ -27,7 +27,16 @@ export const deleteInvoice = createAction(
 export const clearEditedInvoice = createAction(
   '[Invoice] Clear Edited Invoice'
 );
-
+// Action to add a filter
+export const addFilter = createAction(
+  '[Invoice] Add Filter',
+  props<{ filter: string }>()
+);
+// action ro remove filter
+export const removeFilter = createAction(
+  '[Invoice] Remove Filter',
+  props<{ filter: string }>()
+);
 // Action to load invoices from a service
 export const loadInvoices = createAction('[Invoice] Load Invoices');
 
