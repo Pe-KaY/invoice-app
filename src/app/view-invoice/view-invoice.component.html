@@ -1,5 +1,18 @@
 <ng-container *ngIf="invoice$ | async as invoice">
-  <div class="container">
+  <div
+   class="container">
+    <!-- confirm delete modal -->
+    <div 
+    [class.darkmodeBackground]="service.isDarkMode"
+    *ngIf="service.confirmDelete" class="confirmdelete">
+      <h1>Confirm Delete</h1>
+      <p>Are you sure you want to delete invoice {{ invoice?.id }} This action cannot be undone.</p>
+      <span class="deletebuttonswrapper">
+        <span (click)="service.confirmDeleteToggle()" class="edit" >Cancel</span>
+        <span (click)="deleteInvoice(invoice.id)" class="delete">Delete</span>
+      </span>
+    </div>
+
     <div (click)="service.closeViewInvoice()" class="backwrapper">
       <!-- back icon svg -->
       <svg
@@ -77,12 +90,20 @@
         </span>
       </div>
       <div class="controls">
-        <span (click)="editButton()" class="edit" [class.darkmodeTextBold]="service.isDarkMode"
-        [class.editDarkmode]="service.isDarkMode"
+        <span
+          (click)="editButton()"
+          class="edit"
+          [class.darkmodeTextBold]="service.isDarkMode"
+          [class.editDarkmode]="service.isDarkMode"
           >Edit</span
         >
-        <span class="delete">Delete</span>
-        <span (click)="changeStatus(invoice)" class="mark">Mark as {{invoice.status === 'paid' ? 'pending' : 'paid'}}</span>
+        <span (click)="confirmDelete()" class="delete">Delete</span>
+        <span
+          *ngIf="invoice.status !== 'draft'"
+          (click)="changeStatus(invoice)"
+          class="mark"
+          >Mark as {{ invoice.status === "paid" ? "pending" : "paid" }}</span
+        >
       </div>
     </div>
 

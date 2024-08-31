@@ -30,7 +30,9 @@
   </div>
   <div
     class="contentwrapper"
-    [style.overflow-y]="service.modifyInvoice ? 'hidden' : 'auto'"
+    [style.overflow-y]="
+      service.modifyInvoice || service.confirmDelete ? 'hidden' : 'auto'
+    "
   >
     <div class="content">
       <!-- Menu -->
@@ -42,8 +44,16 @@
             <p class="headtext" [class.darkmodeText]="service.isDarkMode">
               Invoices
             </p>
-            <p *ngIf="invoices$ | async as invoices" class="totaltext" [class.darkmodeText]="service.isDarkMode">
-              There are {{invoices.length}} total invoices
+            <p
+              *ngIf="invoices$ | async as invoices"
+              class="totaltext"
+              [class.darkmodeText]="service.isDarkMode"
+            >
+              {{
+                invoices.length > 0
+                  ? "There are " + invoices.length + " total invoice(s)"
+                  : "No invoices"
+              }}
             </p>
           </div>
           <div class="menuoptions">
@@ -51,19 +61,35 @@
               <p [class.darkmodeText]="service.isDarkMode">Filter by status</p>
               <img src="../assets/icons/filter.png" alt="filter icon" />
 
-              <div 
-              [class.darkmode]="service.isDarkMode"
-              class="filtermenu">
+              <div [class.darkmode]="service.isDarkMode" class="filtermenu">
                 <span class="option">
-                  <input class="filteroptions" type="checkbox" id="draft" />
+                  <input
+                    (change)="onFilterChange($event, 'draft')"
+                    class="filteroptions"
+                    type="checkbox"
+                    id="draft"
+                    [checked]="draft"
+                  />
                   <label for="draft"><p>Draft</p></label>
                 </span>
                 <span class="option">
-                  <input class="filteroptions" type="checkbox" id="pending" />
+                  <input
+                    (change)="onFilterChange($event, 'pending')"
+                    class="filteroptions"
+                    type="checkbox"
+                    id="pending"
+                    [checked]="pending"
+                  />
                   <label for="pending"><p>Pending</p></label>
                 </span>
                 <span class="option">
-                  <input class="filteroptions" type="checkbox" id="paid" />
+                  <input
+                    (change)="onFilterChange($event, 'paid')"
+                    class="filteroptions"
+                    type="checkbox"
+                    id="paid"
+                    [checked]="paid"
+                  />
                   <label for="paid"><p>Paid</p></label>
                 </span>
               </div>
@@ -80,9 +106,9 @@
       <div class="routeroutlet">
         <!-- router outlet div to switch between invoices and view invoice  -->
 
-        <!--Displays Invoices when not viewing an invoice-->
-        <ng-container *ngIf="!service.viewInvoice">
-          <ng-container *ngIf="invoices$ | async as invoices">
+        <!--Displays list of available invoices-->
+        <ng-container *ngIf="invoices$ | async as invoices">
+          <ng-container *ngIf="!service.viewInvoice && invoices.length > 0">
             <app-invoice
               *ngFor="let invoice of invoices"
               [invoice]="invoice"
@@ -91,7 +117,29 @@
           </ng-container>
         </ng-container>
 
-        <!-- Displays Invoice when viewing an invoice -->
+        <!-- displays when invoice is 0 or empty -->
+        <ng-container *ngIf="invoices$ | async as invoices">
+          <ng-container *ngIf="invoices.length === 0">
+            <div class="empty">
+              <div class="emptyimgwrapper">
+                <img src="../assets/icons/noinvoiceimage.png" alt="empty" />
+              </div>
+              <p class="emptyhead" [class.darkmodeText]="service.isDarkMode">
+                There is nothing here
+              </p>
+              <span>
+                <p [class.darkmodeText]="service.isDarkMode" class="smalltext">
+                  Create an invoice by clicking the
+                </p>
+                <p [class.darkmodeText]="service.isDarkMode" class="smalltext">
+                  <span>New Invoice</span> Button and get started
+                </p>
+              </span>
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <!-- Displays Invoice when an invoice is clicked -->
         <ng-container *ngIf="service.viewInvoice">
           <app-view-invoice></app-view-invoice>
         </ng-container>
@@ -99,13 +147,16 @@
     </div>
 
     <!-- Add or Edit Invoice Side Modal -->
-    <div 
-    *ngIf="service.modifyInvoice" class="add-edit-invoice">
+    <div
+      *ngIf="service.modifyInvoice || service.confirmDelete"
+      class="add-edit-invoice"
+    >
       <!-- form to edit or add invoice -->
       <div
-       class="form"
-       [class.darkform]="service.isDarkMode"
-       >
+        *ngIf="!service.confirmDelete"
+        class="form"
+        [class.darkform]="service.isDarkMode"
+      >
         <app-edit-add-invoice></app-edit-add-invoice>
       </div>
     </div>

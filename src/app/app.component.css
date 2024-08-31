@@ -255,7 +255,41 @@ label {
   gap: 0.5rem;
 }
 
-/* darkMode */
+/* empty Invoice Screen */
+.empty{
+  /* border: 2px solid red; */
+  min-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #7c7c7c;
+}
+.emptyhead{
+  font-size: 1.5rem;
+  color: black;
+}
+
+.smalltext{
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.smalltext > span{
+  font-weight: bold;
+}
+.smalltext.darkmodeText{
+  color: #dfe3fa;
+}
+/* darkmode text on empty screen */
+.emptyhead.darkmodeText{
+  color: white;
+}
+
+/* DARK MODE */
 .darkmode {
   background-color: #1e2139;
 }
@@ -265,6 +299,7 @@ label {
 .filtermenu.darkmode {
   color: white;
   box-shadow: 0 5px 15px 5px #9277ff36;
+  background-color: #252945;
 }
 .filtermenu.darkmode span input:hover{
   outline: 1px solid #9277ff;
@@ -335,6 +370,7 @@ label {
     border: none;
     border-inline-start: 1px solid #858bb2;
   }
+
 
   /* side ends   here*/
 

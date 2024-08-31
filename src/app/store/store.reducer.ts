@@ -5,12 +5,14 @@ import { Invoice } from '../../interfaces/invoice-interface';
 export interface AppState {
   invoices: Invoice[]; // Array of invoices
   editedInvoice: Invoice | null; // Currently editing invoice or null if not editing
+  selectedFilters: string[];
 }
 export const initialState: AppState = {
   invoices: [],
   editedInvoice: null,
+  selectedFilters: ['pending', 'paid', 'draft']
 };
-
+ 
 export const invoiceReducer = createReducer(
   initialState,
   on(InvoiceActions.addInvoice, (state, { invoice }) => ({
@@ -26,6 +28,14 @@ export const invoiceReducer = createReducer(
   on(InvoiceActions.editInvoice, (state, { invoice }) => ({
     ...state,
     editedInvoice: invoice,
+  })),
+  on(InvoiceActions.addFilter, (state, { filter }) => ({
+    ...state,
+    selectedFilters: [...state.selectedFilters, filter],
+  })),
+  on(InvoiceActions.removeFilter, (state, { filter }) => ({
+    ...state,
+    selectedFilters: state.selectedFilters.filter(f => f !== filter),
   })),
   on(InvoiceActions.deleteInvoice, (state, { id }) => ({
     ...state,
