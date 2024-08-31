@@ -16,6 +16,20 @@ fieldset {
   border: none;
 }
 
+label{
+  color: #7e88c3;
+  font-size: 1.1rem;
+}
+h1 > span{
+  color: #7E88C3;
+}
+
+p{
+  color: #7c5dfa;
+  font-weight: bold;
+}
+
+
 input {
   display: block;
   border: none;
@@ -24,8 +38,20 @@ input {
   padding: 1rem;
   border-radius: 0.3rem;
   outline: 2px solid #dfe3fa;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
 }
-
+input::placeholder{
+  color: #252945;
+  /* font-weight: 600; */
+}
+input.inputdarkmode::placeholder{
+  color: #9798A3;
+}
+input:hover{
+  outline: 1px solid #7c5dfa;
+}
 /* form details */
 .details {
   height: 86%;
@@ -61,10 +87,10 @@ input {
 }
 
 /* invoice date */
-input[type="date"] {
-  font-weight: bold;
-  font-size: 1rem;
+.invoicedate:hover > input{
+  outline: 1px solid #7C5DFA;
 }
+
 
 /* payment terms container */
 .paymentterms {
@@ -75,12 +101,13 @@ input[type="date"] {
 
 .termscontainer {
   height: 100%;
-  border: 1px solid blueviolet;
+  border: 1px solid transparent;
   border-radius: 0.3rem;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0.2rem;
   padding-right: 0.5rem;
 }
 .termscontainer > img{
@@ -89,7 +116,7 @@ input[type="date"] {
 }
 /* payment terms input */
 .termsinputdisplay{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 80%;
   height: 100%;
   font-weight: bold;
@@ -99,9 +126,13 @@ input[type="date"] {
   padding-inline-start: 1rem;
 }
 
+
 /* on hover display terms menu */
 .termscontainer:hover > .termsMenu{
   display: flex;
+}
+.termscontainer:hover{
+  border-color: #7C5DFA;
 }
 
 /* terms select menu */
@@ -134,28 +165,48 @@ input[type="date"] {
   color: #7C5DFA;
 }
 
-
+/* Items Controls styling */
+.items{
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.itemlist{
+  font-size: 1.5rem;
+  color: #777F98;
+  }
 /* addnew item button */
 .additem {
   background-color: #f9fafe;
   color: #7e88c3;
   display: block;
   width: 80%;
-  min-height: 4rem;
+  min-height: 3.5rem;
   margin: auto;
   border-radius: 100vw;
   border: none;
   display: flex;
+  gap: 0.3rem;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
 .plusicon {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
+  color: #7C5DFA;
 }
 .additemtext {
   font-size: 1.4rem;
+  font-weight: 100;
+  color: #7e88c3;
+}
+.additem.inputdarkmode > p{
+  color: #D9E1FA
+}
+.additem.inputdarkmode > .plusicon{
+  color: #D9E1FA
 }
 
 /* item container */
@@ -172,6 +223,14 @@ input[type="date"] {
 .item-total {
   width: 15%;
 }
+.totalinput{
+  outline: none;
+  cursor: default;
+}
+.totalinput:hover{
+  outline: none;
+}
+
 
 .remove-item {
   /* border: 1px solid red; */
@@ -188,7 +247,7 @@ input[type="date"] {
   box-shadow: 0 -5px 10px 5px #e2e3f0;
   min-height: 4rem;
   display: flex;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 /* discard wrap */
@@ -248,4 +307,39 @@ input[type="date"] {
 }
 .invalidText {
   color: red;
+}
+
+/* darkmode tweaks */
+.formdarkmode{
+  background-color: #141625;
+  box-shadow: none;
+}
+.headingdarkmode{
+  color: white;
+}
+h1.headingdarkmode > span{
+  color: #7C5DFA;
+}
+
+.inputdarkmode{
+  background-color: #1E2139;
+  outline: none;
+  color: white;
+}
+.labeldarkmode{
+  color: #dfe3fa;
+}
+/* totalinputDarkmode */
+.totalinput.inputdarkmode{
+  background-color: transparent;
+}
+
+.termsMenu.inputdarkmode > span{
+  border-color: #141625;
+}
+.termsMenu.inputdarkmode > span > p{
+  color: white;
+}
+.termsMenu.inputdarkmode > span:hover > p{
+  color: #7c5dfa;
 }
