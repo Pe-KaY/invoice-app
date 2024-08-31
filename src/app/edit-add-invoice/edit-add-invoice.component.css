@@ -302,11 +302,11 @@ input:hover{
 }
 
 /* invalid input style */
-.invalid {
-  outline: 1px solid red;
+input.invalid {
+  outline: 1px solid rgb(236, 87, 87);
 }
-.invalidText {
-  color: red;
+label.invalidText {
+  color: rgb(236, 87, 87);
 }
 
 /* darkmode tweaks */

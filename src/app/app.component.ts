@@ -37,10 +37,7 @@ export class AppComponent {
   sunIcon = '../assets/icons/sun.svg';
   moonIcon = '../assets/icons/moon.svg';
   imgUrl!: string;
-  // filter logic
-  paid = true;
-  pending = true;
-  draft = true;
+  
 
   constructor(private store: Store, public service: InvoiceService) {
     this.store.dispatch(loadInvoices());
@@ -50,6 +47,7 @@ export class AppComponent {
     this.invoices$ = this.store.select(selectFilteredInvoices);
     this.imgUrl = this.moonIcon;
   }
+  
 
   // toggle dark mode icons (sun and moon)
   toggleDarkMode() {
