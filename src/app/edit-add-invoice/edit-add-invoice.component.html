@@ -1,10 +1,17 @@
-<div class="container">
-  <form [formGroup]="invoiceForm">
+<div [class.formdarkmode]="service.isDarkMode" class="container">
+  <form [class.formdarkmode]="service.isDarkMode" [formGroup]="invoiceForm">
     <!-- DETAILS STARTS HERE -->
 
     <div class="details">
       <!-- heading -->
-      <h1>New Invoice</h1>
+      <ng-container *ngIf="!service.editButtonClicked">
+        <h1 [class.headingdarkmode]="service.isDarkMode">New Invoice</h1>
+      </ng-container>
+      <ng-container *ngIf="service.editButtonClicked">
+        <h1 [class.headingdarkmode]="service.isDarkMode">
+          Edit <span>#</span>{{ invoiceId }}
+        </h1>
+      </ng-container>
 
       <!-- sender details -->
       <fieldset formGroupName="senderAddress">
@@ -13,6 +20,7 @@
           <!--sender street address -->
           <div class="textinput">
             <label
+              [class.labeldarkmode]="service.isDarkMode"
               [ngClass]="{
                 invalidText:
                   formSubmitted &&
@@ -22,6 +30,7 @@
               >Street Address</label
             >
             <input
+              [class.inputdarkmode]="service.isDarkMode"
               [ngClass]="{
                 invalid:
                   formSubmitted &&
@@ -39,6 +48,7 @@
             <div class="citypostal">
               <span>
                 <label
+                  [class.labeldarkmode]="service.isDarkMode"
                   [ngClass]="{
                     invalidText:
                       formSubmitted &&
@@ -48,6 +58,7 @@
                   >City</label
                 >
                 <input
+                  [class.inputdarkmode]="service.isDarkMode"
                   [ngClass]="{
                     invalid:
                       formSubmitted &&
@@ -61,6 +72,7 @@
               </span>
               <span>
                 <label
+                  [class.labeldarkmode]="service.isDarkMode"
                   [ngClass]="{
                     invalidText:
                       formSubmitted &&
@@ -70,6 +82,7 @@
                   >Postal Code</label
                 >
                 <input
+                  [class.inputdarkmode]="service.isDarkMode"
                   [ngClass]="{
                     invalid:
                       formSubmitted &&
@@ -85,6 +98,7 @@
             <!-- sender country -->
             <div class="country">
               <label
+                [class.labeldarkmode]="service.isDarkMode"
                 [ngClass]="{
                   invalidText:
                     formSubmitted &&
@@ -94,6 +108,7 @@
                 >Country</label
               >
               <input
+                [class.inputdarkmode]="service.isDarkMode"
                 [ngClass]="{
                   invalid:
                     formSubmitted &&
@@ -116,6 +131,7 @@
         <!--clients street address -->
         <div class="textinput">
           <label
+            [class.labeldarkmode]="service.isDarkMode"
             [ngClass]="{
               invalidText:
                 formSubmitted && invoiceForm.get('clientName')?.invalid
@@ -124,6 +140,7 @@
             >Clients's Name</label
           >
           <input
+            [class.inputdarkmode]="service.isDarkMode"
             [ngClass]="{
               invalid: formSubmitted && invoiceForm.get('clientName')?.invalid
             }"
@@ -135,6 +152,7 @@
         </div>
         <div class="textinput">
           <label
+            [class.labeldarkmode]="service.isDarkMode"
             [ngClass]="{
               invalidText:
                 formSubmitted && invoiceForm.get('clientEmail')?.invalid
@@ -143,6 +161,7 @@
             >Client's Email</label
           >
           <input
+            [class.inputdarkmode]="service.isDarkMode"
             [ngClass]="{
               invalid: formSubmitted && invoiceForm.get('clientEmail')?.invalid
             }"
@@ -150,12 +169,14 @@
             type="text"
             name=""
             id="clientemail"
+            placeholder="e.g. email@example.com"
           />
         </div>
 
         <fieldset formGroupName="clientAddress">
           <div class="textinput">
             <label
+              [class.labeldarkmode]="service.isDarkMode"
               [ngClass]="{
                 invalidText:
                   formSubmitted &&
@@ -165,6 +186,7 @@
               >Street Address</label
             >
             <input
+              [class.inputdarkmode]="service.isDarkMode"
               [ngClass]="{
                 invalid:
                   formSubmitted &&
@@ -182,6 +204,7 @@
             <div class="citypostal">
               <span>
                 <label
+                  [class.labeldarkmode]="service.isDarkMode"
                   [ngClass]="{
                     invalidText:
                       formSubmitted &&
@@ -191,6 +214,7 @@
                   >City</label
                 >
                 <input
+                  [class.inputdarkmode]="service.isDarkMode"
                   [ngClass]="{
                     invalid:
                       formSubmitted &&
@@ -204,6 +228,7 @@
               </span>
               <span>
                 <label
+                  [class.labeldarkmode]="service.isDarkMode"
                   [ngClass]="{
                     invalidText:
                       formSubmitted &&
@@ -213,6 +238,7 @@
                   >Postal Code</label
                 >
                 <input
+                  [class.inputdarkmode]="service.isDarkMode"
                   [ngClass]="{
                     invalid:
                       formSubmitted &&
@@ -228,6 +254,7 @@
             <!-- clients country -->
             <div class="country">
               <label
+                [class.labeldarkmode]="service.isDarkMode"
                 [ngClass]="{
                   invalidText:
                     formSubmitted &&
@@ -237,6 +264,7 @@
                 >Country</label
               >
               <input
+                [class.inputdarkmode]="service.isDarkMode"
                 [ngClass]="{
                   invalid:
                     formSubmitted &&
@@ -253,20 +281,47 @@
 
         <div class="invoicedatesContainer">
           <div class="invoicedate">
-            <label for="invoicedate">Invoice Date</label>
+            <label [class.labeldarkmode]="service.isDarkMode" for="invoicedate"
+              >Invoice Date</label
+            >
             <input
+              [class.inputdarkmode]="service.isDarkMode"
               formControlName="createdAt"
               type="date"
               id="invoicedate"
             />
           </div>
           <div class="paymentterms">
-            <label>Payment Terms</label>
-            <div class="termscontainer">
-              <span class="termsinputdisplay" #displayterms>{{termsString}}</span>
+            <label [class.labeldarkmode]="service.isDarkMode">
+              Payment Terms</label
+            >
+            <div
+              [class.inputdarkmode]="service.isDarkMode"
+              class="termscontainer"
+            >
+              <span
+                [class.inputdarkmode]="service.isDarkMode"
+                class="termsinputdisplay"
+                #displayterms
+                >{{ termsString }}</span
+              >
+              <!-- icon -->
+              <svg
+                width="11"
+                height="7"
+                viewBox="0 0 11 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5.2279 5.2279L9.4558 1"
+                  stroke="#7C5DFA"
+                  stroke-width="2"
+                />
+              </svg>
 
               <!-- floating menu -->
-              <div class="termsMenu">
+              <div [class.inputdarkmode]="service.isDarkMode" class="termsMenu">
                 <span (click)="onTermsChange('1')"><p>Net 1 Day</p> </span>
                 <span (click)="onTermsChange('7')"><p>Net 7 Days</p></span>
                 <span (click)="onTermsChange('14')"><p>Net 14 Days</p></span>
@@ -280,6 +335,7 @@
       <!-- project description -->
       <div class="projectdescription">
         <label
+          [class.labeldarkmode]="service.isDarkMode"
           [ngClass]="{
             invalidText:
               formSubmitted && invoiceForm.get('description')?.invalid
@@ -288,18 +344,20 @@
           >Project Description</label
         >
         <input
+          [class.inputdarkmode]="service.isDarkMode"
           [ngClass]="{
             invalid: formSubmitted && invoiceForm.get('description')?.invalid
           }"
           formControlName="description"
           type="text"
           id="projectdescription"
+          placeholder="e.g. Graphic Design Service"
         />
       </div>
 
       <!-- items -->
       <div class="items">
-        <p>Item List</p>
+        <p class="itemlist">Item List</p>
 
         <fieldset formArrayName="items">
           <div
@@ -309,9 +367,13 @@
           >
             <!-- item name -->
             <div class="item-name">
-              <label for="item-name-{{ i }}">Item Name</label>
+              <label
+                [class.labeldarkmode]="service.isDarkMode"
+                for="item-name-{{ i }}"
+                >Item Name</label
+              >
               <input
-                #{{i}}
+                [class.inputdarkmode]="service.isDarkMode"
                 [ngClass]="{
                   invalid: formSubmitted && item.get('name')?.invalid
                 }"
@@ -322,8 +384,13 @@
             </div>
             <!-- item quantity -->
             <div class="item-quantity">
-              <label for="item-quantity-{{ i }}">Qty.</label>
+              <label
+                [class.labeldarkmode]="service.isDarkMode"
+                for="item-quantity-{{ i }}"
+                >Qty.</label
+              >
               <input
+                [class.inputdarkmode]="service.isDarkMode"
                 formControlName="quantity"
                 type="number"
                 id="item-quantity-{{ i }}"
@@ -331,8 +398,13 @@
             </div>
             <!-- item price -->
             <div class="item-price">
-              <label for="item-price-{{ i }}">Price</label>
+              <label
+                [class.labeldarkmode]="service.isDarkMode"
+                for="item-price-{{ i }}"
+                >Price</label
+              >
               <input
+                [class.inputdarkmode]="service.isDarkMode"
                 id="item-price-{{ i }}"
                 formControlName="price"
                 type="number"
@@ -341,8 +413,12 @@
             </div>
             <!-- item total -->
             <div class="item-total">
-              <label for="item-total">Total</label>
+              <label [class.labeldarkmode]="service.isDarkMode" for="item-total"
+                >Total</label
+              >
               <input
+                [class.inputdarkmode]="service.isDarkMode"
+                class="totalinput"
                 [value]="
                   (item.get('quantity')?.value || 0) *
                   (item.get('price')?.value || 0)
@@ -359,7 +435,12 @@
         </fieldset>
 
         <!-- this button adds items to the form -->
-        <button class="additem" (click)="onAddItem()" type="button">
+        <button
+          [class.inputdarkmode]="service.isDarkMode"
+          class="additem"
+          (click)="onAddItem()"
+          type="button"
+        >
           <span class="plusicon">+</span>
           <p class="additemtext">Add New Item</p>
         </button>
@@ -373,6 +454,7 @@
         service.editButtonClicked ? 'flex-end' : 'space-between'
       "
       class="formcontrolbuttons"
+      [class.formdarkmode]="service.isDarkMode"
     >
       <!-- button shows when adding new -->
       <div class="discardwrap" *ngIf="!service.editButtonClicked">

@@ -28,6 +28,7 @@ export class EditAddInvoiceComponent {
   invoiceForm!: FormGroup;
   editedInvoice$!: Observable<Invoice | null>;
   formSubmitted = false;
+  invoiceId!: string;
   // payment terms and date values
   termsValue!: number;
   termsString!: string;
@@ -74,6 +75,9 @@ export class EditAddInvoiceComponent {
         this.invoiceForm.patchValue(invoice);
         this.setItems(invoice.items); // Initialize the items array if editing
       }
+
+      // Set the invoice ID 
+      this.invoiceId = invoice?.id || '';
     });
 
     // PAYMENT DATE AND TERMS LOGIC

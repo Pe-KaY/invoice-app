@@ -42,8 +42,8 @@
             <p class="headtext" [class.darkmodeText]="service.isDarkMode">
               Invoices
             </p>
-            <p class="totaltext" [class.darkmodeText]="service.isDarkMode">
-              There are 12 total invoices
+            <p *ngIf="invoices$ | async as invoices" class="totaltext" [class.darkmodeText]="service.isDarkMode">
+              There are {{invoices.length}} total invoices
             </p>
           </div>
           <div class="menuoptions">
@@ -51,7 +51,9 @@
               <p [class.darkmodeText]="service.isDarkMode">Filter by status</p>
               <img src="../assets/icons/filter.png" alt="filter icon" />
 
-              <div class="filtermenu">
+              <div 
+              [class.darkmode]="service.isDarkMode"
+              class="filtermenu">
                 <span class="option">
                   <input class="filteroptions" type="checkbox" id="draft" />
                   <label for="draft"><p>Draft</p></label>
@@ -97,9 +99,13 @@
     </div>
 
     <!-- Add or Edit Invoice Side Modal -->
-    <div *ngIf="service.modifyInvoice" class="add-edit-invoice">
+    <div 
+    *ngIf="service.modifyInvoice" class="add-edit-invoice">
       <!-- form to edit or add invoice -->
-      <div class="form">
+      <div
+       class="form"
+       [class.darkform]="service.isDarkMode"
+       >
         <app-edit-add-invoice></app-edit-add-invoice>
       </div>
     </div>

@@ -91,7 +91,7 @@ figure {
 }
 /* actual form */
 .form {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   position: absolute;
   background-color: white;
   width: 40rem;
@@ -257,7 +257,38 @@ label {
 
 /* darkMode */
 .darkmode {
-  background-color: #1E2139;
+  background-color: #1e2139;
+}
+.darkform {
+  background-color: #141625;
+}
+.filtermenu.darkmode {
+  color: white;
+  box-shadow: 0 5px 15px 5px #9277ff36;
+}
+.filtermenu.darkmode span input:hover{
+  outline: 1px solid #9277ff;
+}
+.filtermenu.darkmode span input {
+  -webkit-appearance: none; /* For WebKit browsers (like Chrome, Safari) */
+  -moz-appearance: none;    /* For Mozilla Firefox */
+  appearance: none;
+  background-color: #141625; 
+}
+.filtermenu.darkmode span input:checked {
+  background-color: #7C5DFA; 
+  position: relative;
+}
+.filtermenu.darkmode span input:checked:after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  transform: translate(-10%, -20%) rotate(45deg);
 }
 
 /* media queries */
