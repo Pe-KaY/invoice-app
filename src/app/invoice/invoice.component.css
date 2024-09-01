@@ -47,12 +47,18 @@
 .name{
   color: #888EB0;
 }
+.namemobile{
+  display: none;
+}
 
 .total{
   font-weight: bold;
   font-size: 1rem;
   margin-inline-end: 1rem;
   flex-shrink: 0;
+}
+.totalmobile{
+  display: none;
 }
 
 .status {
@@ -97,4 +103,48 @@ img{
 
 .darkmode > .idHarsh{
  color: #7E88C3;
+}
+
+@media (max-width:500px) {
+  .container{
+    min-height: fit-content;
+    padding: 1rem;
+    margin-block-start: 1rem;
+  }
+  /* first(id name and total container) */
+  .first{
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+  }
+  .id{
+    margin-block-end: 1rem;
+  }
+  .name{
+    display: none;
+  }
+  .total{
+    display: none;
+  }
+  .namemobile{
+    display: block;
+  }
+  .totalmobile{
+    display: block;
+  }
+
+  /* second(status icon container) */
+  .second{
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    gap: 0;
+    padding-block-end: 1rem;
+  }
+  .icon{
+    display: none;
+  }
+  .status{
+    width: 80%;
+  }
 }

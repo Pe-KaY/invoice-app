@@ -1,16 +1,41 @@
 <div class="titles">
-  <span class="itemname normaltext" [class.darkmodeTextBold]="service.isDarkMode">{{ items.name }}</span>
-  <span class="itemquantity">
+  <span
+    class="itemname normaltext fordesktop"
+    [class.darkmodeTextBold]="service.isDarkMode"
+    >{{ items.name }}</span
+  >
+  <span class="itemquantity fordesktop">
     <p class="normaltext" [class.darkmodeTextBold]="service.isDarkMode">
       {{ items.quantity }}
     </p>
   </span>
-  <span class="itemprice">
+  <span class="itemprice fordesktop">
     <p class="normaltext" [class.darkmodeTextBold]="service.isDarkMode">
       {{ items.price | currency : "EUR" }}
     </p>
   </span>
-  <span class="itemtotal">
+  <span class="itemtotal fordesktop">
+    <p class="normaltext" [class.darkmodeTextBold]="service.isDarkMode">
+      {{ items.quantity * items.price | currency : "EUR" }}
+    </p>
+  </span>
+
+  <!-- mobile view -->
+  <div class="productdetailwrapper formobile">
+    <span
+      class="itemname itemnamemobile  normaltext"
+      [class.darkmodeTextBold]="service.isDarkMode"
+      >{{ items.name }}</span
+    >
+    <span class="quantitytotal">
+      <span class="itemquantity">
+        <p class="normaltext mobiledarkmode" [class.darkmodeTextBold]="service.isDarkMode">
+          {{ items.quantity }} x {{ items.price | currency : "EUR" }}
+        </p>
+      </span>
+    </span>
+  </div>
+  <span class="itemtotal itemtotalmobile formobile">
     <p class="normaltext" [class.darkmodeTextBold]="service.isDarkMode">
       {{ items.quantity * items.price | currency : "EUR" }}
     </p>

@@ -1,6 +1,7 @@
 .container {
-  /* border: 2px solid blue; */
+  /* border: 2px solid green; */
   height: 100%;
+  position: relative;
 }
 
 form {
@@ -10,6 +11,8 @@ form {
   flex-direction: column;
   gap: 1rem;
   padding-block-start: 2rem;
+  /* padding-block-end: 2.5rem; */
+  padding-inline: 2rem;
 }
 
 fieldset {
@@ -19,6 +22,9 @@ fieldset {
 label {
   color: #7e88c3;
   font-size: 1.1rem;
+}
+/* hides invidivual labels on items on desktop view */
+.tohide{
   visibility: hidden;
 }
 h1 > span {
@@ -192,6 +198,7 @@ input:hover {
   width: 80%;
   min-height: 3.5rem;
   margin: auto;
+  margin-block-end: 2rem;
   border-radius: 100vw;
   border: none;
   display: flex;
@@ -283,10 +290,17 @@ span.item-total > p {
 
 /* form control buttons */
 .formcontrolbuttons {
-  box-shadow: 0 -5px 10px 5px #e2e3f0;
-  min-height: 4rem;
-  display: flex;
   /* border: 2px solid red; */
+  box-shadow: 0 -5px 10px 5px #e2e3f0;
+  width: 100%;
+  min-height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-inline: 3rem;
 }
 
 /* discard wrap */
@@ -320,14 +334,8 @@ span.item-total > p {
   place-items: center;
   border-radius: 1.5rem;
   cursor: pointer;
+  transition: background-color .3s;
 }
-.save {
-  background-color: #7c5dfa;
-}
-.draft {
-  background-color: #373b53;
-}
-
 .discard {
   background-color: #f9fafe;
   color: #7e88c3;
@@ -339,6 +347,23 @@ span.item-total > p {
   place-items: center;
   border-radius: 4rem;
   cursor: pointer;
+  transition: background-color .3s;
+}
+.draft {
+  background-color: #373b53;
+}
+.save {
+  background-color: #7c5dfa;
+}
+.draft:hover{
+  background-color: #0C0E16;
+}
+
+.save:hover{
+  background-color: #9277FF;
+}
+.discard:hover{
+  background-color: #DFE3FA;
 }
 
 /* invalid input style */
@@ -393,7 +418,7 @@ span > p.titlesdarkmode{
   .titles {
     display: none;
   }
-  label{
+  .tohide{
     visibility: visible;
   }
 }
