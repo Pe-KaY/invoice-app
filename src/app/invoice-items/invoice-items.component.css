@@ -24,7 +24,9 @@
   width: 15%;
   /* border: 1px solid green; */
 }
-
+.formobile {
+  display: none;
+}
 /* darkmode */
 .darkmodeText {
   color: #dfe3fa;
@@ -32,4 +34,35 @@
 
 .darkmodeTextBold {
   color: white;
+}
+
+/* media query */
+
+@media (max-width: 500px) {
+  /* hides desktop content and shows mobile */
+  .fordesktop {
+    display: none;
+  }
+  .formobile {
+    display: block;
+  }
+
+  .productdetailwrapper{
+    flex-direction: column;
+    align-items: start;
+    width: 60%;
+  }
+  .itemquantity{
+    text-align: start;
+  }
+  .itemtotalmobile {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  /* darkmode for text */
+  .mobiledarkmode{
+    color: #888EB0;
+  }
 }

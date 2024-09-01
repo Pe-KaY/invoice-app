@@ -5,6 +5,9 @@
   gap: 1rem;
   margin-block-start: 1rem;
 }
+.mobilecontrolwrapper {
+  display: none;
+}
 
 .normaltext {
   color: #7e88c3;
@@ -68,6 +71,9 @@ svg {
   align-items: center;
   justify-content: center;
 }
+.statusmobile {
+  display: none;
+}
 .status-bullet {
   display: block;
   width: 0.5rem;
@@ -85,6 +91,12 @@ svg {
   justify-content: end;
   gap: 0.5rem;
 }
+/* hide mobile versions */
+.editmobile,
+.deletemobile,
+.markmobile {
+  display: none;
+}
 /* edit button */
 .edit {
   font-weight: bold;
@@ -95,6 +107,11 @@ svg {
   place-items: center;
   border-radius: 4rem;
   cursor: pointer;
+  color: #7e88c3;
+  transition: background-color 0.3s;
+}
+.edit:hover {
+  background-color: #dfe3fa92;
 }
 .delete {
   font-weight: bold;
@@ -107,6 +124,10 @@ svg {
   place-items: center;
   border-radius: 1.5rem;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+.delete:hover {
+  background-color: #ff9797;
 }
 .mark {
   font-weight: bold;
@@ -119,6 +140,10 @@ svg {
   place-items: center;
   border-radius: 4rem;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+.mark:hover {
+  background-color: #9277ff;
 }
 /* section 2 ends here */
 
@@ -250,13 +275,13 @@ svg {
 /* footer section endss here */
 
 /* confirm delete styling starts here */
-.confirmdelete{
+.confirmdelete {
   position: absolute;
   border-radius: 1rem;
   width: 35rem;
   height: 20rem;
   top: 20%;
-  left: 22%;
+  left: 24%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -268,22 +293,22 @@ svg {
 .confirmdelete > h1 {
   font-size: 2rem;
 }
-.confirmdelete > p{
-  color: #888eb0;;
+.confirmdelete > p {
+  color: #888eb0;
   font-size: 1.2rem;
 }
 
-.deletebuttonswrapper{
+.deletebuttonswrapper {
   display: flex;
   justify-content: end;
   gap: 1rem;
   /* border: 1px solid red; */
 }
 /* darkmode tweaks */
-.confirmdelete.darkmodeBackground > h1{
+.confirmdelete.darkmodeBackground > h1 {
   color: white;
 }
-.confirmdelete.darkmodeBackground .edit{
+.confirmdelete.darkmodeBackground .edit {
   background-color: #252945;
   color: #888eb0;
 }
@@ -308,6 +333,78 @@ svg {
 .iteminfoDark {
   background-color: #252945;
 }
-.editDarkmode{
+.editDarkmode {
   background-color: #252945;
+}
+
+/* media queries */
+@media (max-width: 500px) {
+  /* hides desktop status and edit and show mobile versions */
+  .statusdesktop {
+    display: none;
+    border: 1px solid red;
+  }
+  .statusmobile {
+    display: flex;
+    width: 7rem;
+  }
+  .editdesktop {
+    display: none;
+  }
+  .deletedesktop {
+    display: none;
+  }
+  .markdesktop {
+    display: none;
+  }
+
+  /* Address section */
+  .top-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .bottom-details {
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
+  }
+  .bottom-details > div {
+    flex-grow: 1;
+  }
+  .bold {
+    font-size: 1.2rem;
+  }
+
+  /* footer item details */
+  .titles {
+    display: none;
+  }
+
+  /* footer control buttons */
+  .details {
+    margin-block-end: 8rem;
+  }
+  .mobilecontrolwrapper {
+    box-shadow: 0 -5px 10px 5px #e2e3f0;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .mobilecontrolwrapper.darkmodeBackground{
+    background-color: #1e2139;
+    box-shadow: none
+  }
+  .editmobile,
+  .deletemobile,
+  .markmobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

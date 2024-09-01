@@ -6,6 +6,7 @@
 }
 
 /* side bar */
+
 .sidebar {
   background-color: #373b53;
   border-radius: 0 1.3rem 1.3rem 0;
@@ -13,12 +14,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
+  /* overflow-x: hidden; */
 }
 /* logo container */
 .logocontainer {
   background-color: #7c5dfa;
-  border-radius: 0 0 1.3rem 0;
+  border-radius: 0 1.3rem 1.3rem 0;
   height: 15%;
   display: flex;
   justify-content: center;
@@ -91,13 +92,11 @@ figure {
 }
 /* actual form */
 .form {
-  /* border: 2px solid red; */
   position: absolute;
   background-color: white;
   width: 40rem;
   height: 100%;
   border-radius: 0 1rem 1rem 0;
-  padding: 1rem;
   overflow: hidden;
 }
 
@@ -143,6 +142,9 @@ figure {
 .totaltext {
   font-size: 1rem;
 }
+.mobile{
+  display: none;
+}
 
 /* controls on the right (add invoice and filter) */
 .menuoptions {
@@ -161,7 +163,9 @@ figure {
   position: relative;
   cursor: pointer;
 }
-
+.filtermobile{
+  display: none;
+}
 .filterwrap > p {
   font-weight: 500;
   font-size: 1.3rem;
@@ -226,6 +230,9 @@ label {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+.newinvoicemobile{
+  display: none;
+}
 .newinvoice:hover {
   background-color: #9277ff;
 }
@@ -256,7 +263,7 @@ label {
 }
 
 /* empty Invoice Screen */
-.empty{
+.empty {
   /* border: 2px solid red; */
   min-height: 30rem;
   display: flex;
@@ -268,24 +275,24 @@ label {
   font-weight: bold;
   color: #7c7c7c;
 }
-.emptyhead{
+.emptyhead {
   font-size: 1.5rem;
   color: black;
 }
 
-.smalltext{
+.smalltext {
   text-align: center;
   font-size: 1rem;
   font-weight: 400;
 }
-.smalltext > span{
+.smalltext > span {
   font-weight: bold;
 }
-.smalltext.darkmodeText{
+.smalltext.darkmodeText {
   color: #dfe3fa;
 }
 /* darkmode text on empty screen */
-.emptyhead.darkmodeText{
+.emptyhead.darkmodeText {
   color: white;
 }
 
@@ -301,21 +308,21 @@ label {
   box-shadow: 0 5px 15px 5px #9277ff36;
   background-color: #252945;
 }
-.filtermenu.darkmode span input:hover{
+.filtermenu.darkmode span input:hover {
   outline: 1px solid #9277ff;
 }
 .filtermenu.darkmode span input {
   -webkit-appearance: none; /* For WebKit browsers (like Chrome, Safari) */
-  -moz-appearance: none;    /* For Mozilla Firefox */
+  -moz-appearance: none; /* For Mozilla Firefox */
   appearance: none;
-  background-color: #141625; 
+  background-color: #141625;
 }
 .filtermenu.darkmode span input:checked {
-  background-color: #7C5DFA; 
+  background-color: #7c5dfa;
   position: relative;
 }
 .filtermenu.darkmode span input:checked:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 3px;
   left: 6px;
@@ -371,7 +378,6 @@ label {
     border-inline-start: 1px solid #858bb2;
   }
 
-
   /* side ends   here*/
 
   /* content starts here */
@@ -395,4 +401,67 @@ label {
 }
 
 @media (max-width: 500px) {
+  .maincontainer {
+    align-items: center;
+  }
+  .contentwrapper {
+    padding: 0.4rem;
+  }
+  .content {
+    width: 90%;
+  }
+
+  /* menu head text about invoices and total invoices */
+  .menu {
+    width: 100%;
+    min-height: 3rem;
+    margin-block-start: 1rem;
+    padding: 0.5rem 1rem
+  }
+  .headtext {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-block-end: -0.4rem;
+    /* letter-spacing: 0.1rem; */
+  }
+  /* hides desktop text */
+  .totaltext {
+    display: none;
+  }
+  /* enables mobile text */
+  .mobile{
+    display: block;
+    font-size: 1rem;
+  }
+  /* menu options container responsive */
+  .menuoptions {
+    min-width: fit-content;
+    width: 70%;
+    justify-content: end;
+    gap: 1rem;
+  }
+  /* filter responsive */
+  .filterwrap{
+    width: 40%;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .filterwrap > p{
+    font-size: 1.1rem;
+  }
+  .filterdesktop{
+    display: none;
+  }
+  .filtermobile{
+    display: block;
+  }
+  /* new invoice button */
+  .newinvoicedesktop{
+    display: none;
+  }
+  .newinvoicemobile{
+    display: block;
+  }
+
+   
 }

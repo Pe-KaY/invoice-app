@@ -392,7 +392,8 @@
           >
             <!-- item name -->
             <div class="item-name">
-              <label
+              <label 
+              class="tohide"
                 [class.labeldarkmode]="service.isDarkMode"
                 for="item-name-{{ i }}"
                 >Item Name</label
@@ -410,6 +411,7 @@
             <!-- item quantity -->
             <div class="item-quantity">
               <label
+              class="tohide"
                 [class.labeldarkmode]="service.isDarkMode"
                 for="item-quantity-{{ i }}"
                 >Qty.</label
@@ -424,6 +426,7 @@
             <!-- item price -->
             <div class="item-price">
               <label
+              class="tohide"
                 [class.labeldarkmode]="service.isDarkMode"
                 for="item-price-{{ i }}"
                 >Price</label
@@ -438,7 +441,7 @@
             </div>
             <!-- item total -->
             <div class="item-total">
-              <label [class.labeldarkmode]="service.isDarkMode" for="item-total"
+              <label class="tohide" [class.labeldarkmode]="service.isDarkMode" for="item-total"
                 >Total</label
               >
               <input

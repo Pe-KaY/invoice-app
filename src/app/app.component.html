@@ -55,10 +55,23 @@
                   : "No invoices"
               }}
             </p>
+            <!-- mobile text -->
+            <p
+              *ngIf="invoices$ | async as invoices"
+              class="totaltext mobile"
+              [class.darkmodeText]="service.isDarkMode"
+            >
+              {{
+                invoices.length > 0
+                  ?  invoices.length + " total invoice(s)"
+                  : "No invoices"
+              }}
+            </p>
           </div>
           <div class="menuoptions">
             <div class="filterwrap">
-              <p [class.darkmodeText]="service.isDarkMode">Filter by status</p>
+              <p [class.darkmodeText]="service.isDarkMode" class="filtermobile">Filter</p>
+              <p class="filterdesktop" [class.darkmodeText]="service.isDarkMode">Filter by status</p>
               <img src="../assets/icons/filter.png" alt="filter icon" />
 
               <div [class.darkmode]="service.isDarkMode" class="filtermenu">
@@ -98,7 +111,8 @@
               <span class="addinvoiceIcon">
                 <img src="../assets/icons/addinvoice.png" alt="add invoice" />
               </span>
-              <p class="newinvoiceText">New Invoice</p>
+              <p class=" newinvoiceText newinvoicemobile">New</p>
+              <p class="newinvoiceText newinvoicedesktop">New Invoice</p>
             </div>
           </div>
         </div>

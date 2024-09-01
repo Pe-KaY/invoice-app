@@ -2,10 +2,13 @@
   <div class="first">
     <span class="id" [class.darkmode]="service.isDarkMode"><span [class.idHarsh]="service.isDarkMode">#</span>{{invoice.id}}</span>
     <span class="date">Due {{invoice.paymentDue | date}}</span>
-    <span class="name">{{invoice.clientName}}</span>
+    <span class="name namedesktop">{{invoice.clientName}}</span>
+    <span class="total totalmobile" [class.darkmode]="service.isDarkMode">{{ invoice.total|currency : "EUR" }}</span>
+
   </div>
   <div class="second">
     <span class="total" [class.darkmode]="service.isDarkMode">{{ invoice.total|currency : "EUR" }}</span>
+    <span class="name namemobile">{{invoice.clientName}}</span>
     <span class="status" [ngStyle]="service.getStatusBackground(invoice.status)">
       <span class="status-bullet" [ngStyle]="service.getStatusBullet(invoice.status)"></span>
       <p [ngStyle]="service.getStatusText(invoice.status)">{{invoice.status | titlecase}}</p>

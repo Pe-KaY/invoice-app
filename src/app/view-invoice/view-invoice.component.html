@@ -1,14 +1,18 @@
 <ng-container *ngIf="invoice$ | async as invoice">
-  <div
-   class="container">
+  <div class="container">
     <!-- confirm delete modal -->
-    <div 
-    [class.darkmodeBackground]="service.isDarkMode"
-    *ngIf="service.confirmDelete" class="confirmdelete">
+    <div
+      [class.darkmodeBackground]="service.isDarkMode"
+      *ngIf="service.confirmDelete"
+      class="confirmdelete"
+    >
       <h1>Confirm Delete</h1>
-      <p>Are you sure you want to delete invoice {{ invoice?.id }} This action cannot be undone.</p>
+      <p>
+        Are you sure you want to delete invoice {{ invoice?.id }} This action
+        cannot be undone.
+      </p>
       <span class="deletebuttonswrapper">
-        <span (click)="service.confirmDeleteToggle()" class="edit" >Cancel</span>
+        <span (click)="service.confirmDeleteToggle()" class="edit">Cancel</span>
         <span (click)="deleteInvoice(invoice.id)" class="delete">Delete</span>
       </span>
     </div>
@@ -77,7 +81,7 @@
       <div class="statuswrapper">
         <p [class.darkmodeText]="service.isDarkMode">Status</p>
         <span
-          class="status"
+          class="status statusdesktop"
           [ngStyle]="service.getStatusBackground(invoice.status)"
         >
           <span
@@ -92,18 +96,33 @@
       <div class="controls">
         <span
           (click)="editButton()"
-          class="edit"
+          class="edit editdesktop"
           [class.darkmodeTextBold]="service.isDarkMode"
           [class.editDarkmode]="service.isDarkMode"
           >Edit</span
         >
-        <span (click)="confirmDelete()" class="delete">Delete</span>
+        <span (click)="confirmDelete()" class="delete deletedesktop"
+          >Delete</span
+        >
         <span
           *ngIf="invoice.status !== 'draft'"
           (click)="changeStatus(invoice)"
-          class="mark"
+          class="mark markdesktop"
           >Mark as {{ invoice.status === "paid" ? "pending" : "paid" }}</span
         >
+        <!-- status mobile view -->
+        <span
+          class="status statusmobile"
+          [ngStyle]="service.getStatusBackground(invoice.status)"
+        >
+          <span
+            class="status-bullet"
+            [ngStyle]="service.getStatusBullet(invoice.status)"
+          ></span>
+          <p [ngStyle]="service.getStatusText(invoice.status)">
+            {{ invoice.status | titlecase }}
+          </p>
+        </span>
       </div>
     </div>
 
@@ -227,5 +246,23 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- mobile control buttons -->
+  <div [class.darkmodeBackground]="service.isDarkMode" class="mobilecontrolwrapper">
+    <span
+      (click)="editButton()"
+      class="edit editmobile"
+      [class.darkmodeTextBold]="service.isDarkMode"
+      [class.editDarkmode]="service.isDarkMode"
+      >Edit</span
+    >
+    <span (click)="confirmDelete()" class="delete deletemobile">Delete</span>
+    <span
+      *ngIf="invoice.status !== 'draft'"
+      (click)="changeStatus(invoice)"
+      class="mark markmobile"
+      >Mark as {{ invoice.status === "paid" ? "pending" : "paid" }}</span
+    >
   </div>
 </ng-container>
