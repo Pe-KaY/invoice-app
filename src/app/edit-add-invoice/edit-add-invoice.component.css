@@ -16,19 +16,19 @@ fieldset {
   border: none;
 }
 
-label{
+label {
   color: #7e88c3;
   font-size: 1.1rem;
+  visibility: hidden;
 }
-h1 > span{
-  color: #7E88C3;
+h1 > span {
+  color: #7e88c3;
 }
 
-p{
+p {
   color: #7c5dfa;
   font-weight: bold;
 }
-
 
 input {
   display: block;
@@ -42,14 +42,14 @@ input {
   font-size: 1rem;
   cursor: pointer;
 }
-input::placeholder{
+input::placeholder {
   color: #252945;
   /* font-weight: 600; */
 }
-input.inputdarkmode::placeholder{
-  color: #9798A3;
+input.inputdarkmode::placeholder {
+  color: #9798a3;
 }
-input:hover{
+input:hover {
   outline: 1px solid #7c5dfa;
 }
 /* form details */
@@ -87,10 +87,9 @@ input:hover{
 }
 
 /* invoice date */
-.invoicedate:hover > input{
-  outline: 1px solid #7C5DFA;
+.invoicedate:hover > input {
+  outline: 1px solid #7c5dfa;
 }
-
 
 /* payment terms container */
 .paymentterms {
@@ -110,12 +109,12 @@ input:hover{
   padding: 0.2rem;
   padding-right: 0.5rem;
 }
-.termscontainer > img{
+.termscontainer > img {
   width: 0.9rem;
   height: 0.8rem;
 }
 /* payment terms input */
-.termsinputdisplay{
+.termsinputdisplay {
   /* border: 1px solid red; */
   width: 80%;
   height: 100%;
@@ -126,18 +125,17 @@ input:hover{
   padding-inline-start: 1rem;
 }
 
-
 /* on hover display terms menu */
-.termscontainer:hover > .termsMenu{
+.termscontainer:hover > .termsMenu {
   display: flex;
 }
-.termscontainer:hover{
-  border-color: #7C5DFA;
+.termscontainer:hover {
+  border-color: #7c5dfa;
 }
 
 /* terms select menu */
-.termsMenu{
-  box-shadow: 0 10px 20px rgba(72,84,159,.25);
+.termsMenu {
+  box-shadow: 0 10px 20px rgba(72, 84, 159, 0.25);
   background-color: white;
   color: white;
   border-radius: 0.3rem;
@@ -152,30 +150,40 @@ input:hover{
   display: none;
 }
 /* terms select list */
-.termsMenu > span{
+.termsMenu > span {
   cursor: pointer;
   color: black;
   font-weight: bold;
   padding-bottom: 0.5rem;
 }
-.termsMenu > span:not(:last-child){
+.termsMenu > span:not(:last-child) {
   border-bottom: 1px solid #dfe3fa;
 }
-.termsMenu > span:hover > p{
-  color: #7C5DFA;
+.termsMenu > span:hover > p {
+  color: #7c5dfa;
 }
 
 /* Items Controls styling */
-.items{
+.items {
   /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
-.itemlist{
+
+/* items headers shown on desktop (name price qunatity total) */
+.titles {
+  /* border: 2px solid yellow; */
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+/* ///// */
+
+.itemlist {
   font-size: 1.5rem;
-  color: #777F98;
-  }
+  color: #777f98;
+}
 /* addnew item button */
 .additem {
   background-color: #f9fafe;
@@ -195,18 +203,18 @@ input:hover{
 .plusicon {
   font-size: 1.1rem;
   font-weight: bold;
-  color: #7C5DFA;
+  color: #7c5dfa;
 }
 .additemtext {
   font-size: 1.4rem;
   font-weight: 100;
   color: #7e88c3;
 }
-.additem.inputdarkmode > p{
-  color: #D9E1FA
+.additem.inputdarkmode > p {
+  color: #d9e1fa;
 }
-.additem.inputdarkmode > .plusicon{
-  color: #D9E1FA
+.additem.inputdarkmode > .plusicon {
+  color: #d9e1fa;
 }
 
 /* item container */
@@ -214,6 +222,38 @@ input:hover{
   display: flex;
   justify-content: space-between;
 }
+
+/* shown on desktop (name quantitty price and total) */
+.titles {
+  margin-block-start: -1rem;
+  margin-block-end: -2rem;
+}
+span.item-name {
+  width: 44%;
+  /* border: 1px solid red; */
+}
+.nestedwrapper {
+  /* border: 1px solid red; */
+  display: flex;
+  gap: 4.5rem;
+}
+span.item-name > p {
+  color: #7e88c3;
+  font-weight: 400;
+}
+span.item-quantity > p {
+  color: #7e88c3;
+  font-weight: 400;
+}
+span.item-price > p {
+  color: #7e88c3;
+  font-weight: 400;
+}
+span.item-total > p {
+  color: #7e88c3;
+  font-weight: 400;
+}
+/* /// */
 
 .item-name {
   width: 40%;
@@ -223,14 +263,13 @@ input:hover{
 .item-total {
   width: 15%;
 }
-.totalinput{
+.totalinput {
   outline: none;
   cursor: default;
 }
-.totalinput:hover{
+.totalinput:hover {
   outline: none;
 }
-
 
 .remove-item {
   /* border: 1px solid red; */
@@ -268,7 +307,8 @@ input:hover{
 }
 
 /* buttons */
-.save ,.draft {
+.save,
+.draft {
   background-color: #ec5757;
   color: white;
   width: 45%;
@@ -281,14 +321,14 @@ input:hover{
   border-radius: 1.5rem;
   cursor: pointer;
 }
-.save{
+.save {
   background-color: #7c5dfa;
 }
-.draft{
+.draft {
   background-color: #373b53;
 }
 
-.discard{
+.discard {
   background-color: #f9fafe;
   color: #7e88c3;
   width: 30%;
@@ -310,36 +350,50 @@ label.invalidText {
 }
 
 /* darkmode tweaks */
-.formdarkmode{
+.formdarkmode {
   background-color: #141625;
   box-shadow: none;
 }
-.headingdarkmode{
+.headingdarkmode {
   color: white;
 }
-h1.headingdarkmode > span{
-  color: #7C5DFA;
+h1.headingdarkmode > span {
+  color: #7c5dfa;
 }
 
-.inputdarkmode{
-  background-color: #1E2139;
+.inputdarkmode {
+  background-color: #1e2139;
   outline: none;
   color: white;
 }
-.labeldarkmode{
+.labeldarkmode {
   color: #dfe3fa;
 }
 /* totalinputDarkmode */
-.totalinput.inputdarkmode{
+.totalinput.inputdarkmode {
   background-color: transparent;
 }
 
-.termsMenu.inputdarkmode > span{
+.termsMenu.inputdarkmode > span {
   border-color: #141625;
 }
-.termsMenu.inputdarkmode > span > p{
+.termsMenu.inputdarkmode > span > p {
   color: white;
 }
-.termsMenu.inputdarkmode > span:hover > p{
+.termsMenu.inputdarkmode > span:hover > p {
   color: #7c5dfa;
+}
+
+/* items title on Desktop Darkmode (name price quantity and total) */
+span > p.titlesdarkmode{
+  color: #dfe3fa;
+}
+
+@media (max-width: 500px) {
+  .titles {
+    display: none;
+  }
+  label{
+    visibility: visible;
+  }
 }

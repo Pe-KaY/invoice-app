@@ -216,7 +216,7 @@
                 <input
                   [class.inputdarkmode]="service.isDarkMode"
                   [ngClass]="{
-                      invalid:
+                    invalid:
                       formSubmitted &&
                       invoiceForm.get('clientAddress.city')?.invalid
                   }"
@@ -357,6 +357,32 @@
       <!-- items -->
       <div class="items">
         <p class="itemlist">Item List</p>
+        <!--item titles  shown on desktop -->
+        <div class="titles">
+          <span
+            class="item-name normaltext"
+            [class.darkmodeTextBold]="service.isDarkMode"
+            ><p [class.titlesdarkmode]="service.isDarkMode">Item Name</p></span
+          >
+          <div class="nestedwrapper">
+            <span class="item-quantity">
+              <p class="normaltext" [class.titlesdarkmode]="service.isDarkMode">
+                Qty.
+              </p>
+            </span>
+            <span class="item-price">
+              <p class="normaltext" [class.titlesdarkmode]="service.isDarkMode">
+                Price
+              </p>
+            </span>
+            <span class="item-total">
+              <p class="normaltext" [class.titlesdarkmode]="service.isDarkMode">
+                Total
+              </p>
+            </span>
+          </div>
+        </div>
+        <!-- items titles shown on desktop ends here -->
 
         <fieldset formArrayName="items">
           <div
