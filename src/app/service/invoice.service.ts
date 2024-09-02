@@ -65,6 +65,7 @@ export class InvoiceService {
   }
   // toggle confirm delete modal
   confirmDeleteToggle() {
+    this.scrollToTop();
     this.confirmDelete = !this.confirmDelete;
   }
 
