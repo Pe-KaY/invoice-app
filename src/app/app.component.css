@@ -8,6 +8,9 @@
 /* side bar */
 
 .sidebar {
+  position: fixed;
+  height: 100%;
+  z-index: 99;
   background-color: #373b53;
   border-radius: 0 1.3rem 1.3rem 0;
   width: 7rem;
@@ -88,6 +91,7 @@ figure {
   background-color: rgba(0, 0, 0, 0.463);
   width: 100%;
   height: 100%;
+  /* padding-inline-start: 6rem; */
   left: 0;
 }
 /* actual form */
@@ -96,6 +100,7 @@ figure {
   background-color: white;
   width: 40rem;
   height: 100%;
+  margin-inline-start: 6rem;
   border-radius: 0 1rem 1rem 0;
   overflow: hidden;
 }
@@ -106,7 +111,8 @@ figure {
   width: 100%;
   min-width: 30rem;
   display: flex;
-  padding-inline-start: 15%;
+  justify-content: center;
+  /* padding-inline-start: 15%; */
   position: relative;
 }
 
@@ -341,6 +347,7 @@ label {
   }
   /* side bar  starts here*/
   .sidebar {
+    position: static;
     width: 100%;
     height: 7rem;
     flex-direction: row;
@@ -379,7 +386,10 @@ label {
   }
 
   /* side ends   here*/
-
+/* form */
+.form {
+  margin-inline-start: 0rem;
+}
   /* content starts here */
 
   .contentwrapper {
@@ -393,10 +403,19 @@ label {
   }
   /* content ends here */
 }
+@media (max-width: 642px) {
+  .form {
+    width: 30rem;
+    height: 100%;
+  }
+}
 
 @media (max-width: 554px) {
   .logocontainer {
     width: 5rem;
+  }
+  .sidebar{
+    position: static;
   }
 }
 
@@ -463,5 +482,10 @@ label {
     display: block;
   }
 
+  /* form */
+  .form{
+    width: 100%;
+    height: 100%
+  }
    
 }

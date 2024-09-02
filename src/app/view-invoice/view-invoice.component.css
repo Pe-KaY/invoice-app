@@ -277,11 +277,12 @@ svg {
 /* confirm delete styling starts here */
 .confirmdelete {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 1rem;
   width: 35rem;
   height: 20rem;
-  top: 20%;
-  left: 24%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -338,6 +339,12 @@ svg {
 }
 
 /* media queries */
+@media (max-width: 566px) {
+  .confirmdelete {
+    width: 20rem;
+  }
+}
+
 @media (max-width: 500px) {
   /* hides desktop status and edit and show mobile versions */
   .statusdesktop {
@@ -396,9 +403,9 @@ svg {
     align-items: center;
     gap: 1rem;
   }
-  .mobilecontrolwrapper.darkmodeBackground{
+  .mobilecontrolwrapper.darkmodeBackground {
     background-color: #1e2139;
-    box-shadow: none
+    box-shadow: none;
   }
   .editmobile,
   .deletemobile,
