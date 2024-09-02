@@ -14,6 +14,10 @@ form {
   /* padding-block-end: 2.5rem; */
   padding-inline: 2rem;
 }
+/* hides items for mobile (go back button) */
+.mobileview{
+  display: none;
+}
 
 fieldset {
   border: none;
@@ -408,6 +412,13 @@ h1.headingdarkmode > span {
 .termsMenu.inputdarkmode > span:hover > p {
   color: #7c5dfa;
 }
+.gobacktext{
+  color: #0C0E16;
+}
+
+.darkmodeText {
+  color: #dfe3fa;
+} 
 
 /* items title on Desktop Darkmode (name price quantity and total) */
 span > p.titlesdarkmode{
@@ -438,4 +449,26 @@ span > p.titlesdarkmode{
   .tohide{
     visibility: visible;
   }
+  .mobileview{
+    display: flex;
+  }
+  /* section 1 */
+.backwrapper {
+  /* border: 2px solid red; */
+  width: fit-content;
+  min-height: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* back arrow svg */
+svg {
+  width: 1rem;
+  height: 1rem;
+}
+
 }
